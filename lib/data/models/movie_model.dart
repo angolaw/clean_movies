@@ -15,7 +15,7 @@ class MovieModel extends MovieEntity {
   final num voteAverage;
   final String overview;
   final String releaseDate;
-  final String mediaType;
+  final String? mediaType;
 
   const MovieModel({
     required this.popularity,

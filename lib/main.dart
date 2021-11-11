@@ -1,5 +1,6 @@
 import 'package:clean_movies/data/core/api_client.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/domain/usecases/no_params.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -23,7 +24,7 @@ Future<void> main() async {
   //getTrending();
   //6 - Folding o result do either no usecase
   final Either<AppError, List<MovieEntity?>> eitherResponse =
-      await getTrending();
+      await getTrending(NoParams());
   eitherResponse.fold(
     (l) {
       print("Deu erro meo");

@@ -3,11 +3,16 @@ import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetPlayingNow {
+import '../usecase.dart';
+import 'no_params.dart';
+
+class GetPlayingNow extends UseCase<List<MovieEntity?>, NoParams> {
   final MovieRepository repository;
 
   GetPlayingNow(this.repository);
-  Future<Either<AppError, List<MovieEntity?>>> call() async {
+
+  @override
+  Future<Either<AppError, List<MovieEntity?>>> call(NoParams params) async {
     return await repository.getPlayingNow();
   }
 }

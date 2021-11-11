@@ -1,19 +1,20 @@
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
-import 'package:clean_movies/data/models/movie_model.dart';
+import 'package:clean_movies/domain/entities/movie_entity.dart';
+import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
+import 'package:dartz/dartz.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
   MovieRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<List<MovieModel?>> getTrending() async {
+  Future<Either<AppError, List<MovieEntity?>>> getTrending() async {
     try {
       final movies = await remoteDataSource.getTrending();
-      return movies;
+      return right(movies);
     } on Exception {
-      //return null;
-      throw Exception();
+      return left(const AppError("Algo deu errado"));
     }
   }
 }

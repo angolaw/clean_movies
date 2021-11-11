@@ -3,12 +3,21 @@ import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import 'data/repositories/movie_repository_impl.dart';
+import 'domain/repositories/movie_repository.dart';
+import 'domain/usecases/get_trending.dart';
+
 void main() {
-  MovieRemoteDataSource dataSource =
-      MovieRemoteDataSourceImpl(ApiClient(Client()));
-  dataSource.getTrending();
-  print("================================");
-  dataSource.getPopular();
+  //1 - Iniciando a ApiClient
+  ApiClient client = ApiClient(Client());
+  //2 - Instanciando o datasource e passando a instancia do cliente
+  MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(client);
+  //3 - Instanciando o repository e passando a instancia do datasource
+  MovieRepository repository = MovieRepositoryImpl(dataSource);
+  //4 - Instanciando o usecase e passando o repository
+  GetTrending getTrending = GetTrending(repository);
+  //5 - Executando o usecase
+  getTrending();
   runApp(const MyApp());
 }
 

@@ -8,6 +8,6 @@ class GetPopular {
 
   GetPopular(this.repository);
   Future<Either<AppError, List<MovieEntity?>>> call() async {
-    return await repository.getComingSoon();
+    return await repository.getPopular();
   }
 }

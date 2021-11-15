@@ -10,13 +10,17 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 import 'data/repositories/movie_repository_impl.dart';
+import 'di/get_it.dart';
 import 'domain/entities/app_error.dart';
 import 'domain/entities/movie_entity.dart';
 import 'domain/repositories/movie_repository.dart';
 import 'domain/usecases/get_trending.dart';
 import 'domain/usecases/get_coming_soon.dart';
 
+import 'di/get_it.dart' as getIt;
+
 Future<void> main() async {
+  //! SEM INJEÇÃO DE DEPENDENCIAS
   // //1 - Iniciando a ApiClient
   // ApiClient client = ApiClient(Client());
   // //2 - Instanciando o datasource e passando a instancia do cliente
@@ -39,7 +43,6 @@ Future<void> main() async {
   //     await getPopular(NoParams());
   // final Either<AppError, List<MovieEntity?>> eitherGetPlayingNow =
   //     await getPlayingNow(NoParams());
-
   // eitherTrending.fold(
   //   (l) {
   //     print("Deu erro meo");
@@ -82,7 +85,20 @@ Future<void> main() async {
   // );
 
   //! USANDO INJEÇÃO DE DEPENDENCIAS
-  unawaited(future)
+  unawaited(getIt.init());
+  GetTrending getTrending = getIt.getItInstance<GetTrending>();
+  final Either<AppError, List<MovieEntity?>> eitherTrending =
+      await getTrending(NoParams());
+  eitherTrending.fold(
+    (l) {
+      print("Deu erro meo");
+      print(l.message);
+    },
+    (r) {
+      print("TRENDING");
+      print(r);
+    },
+  );
   runApp(const MyApp());
 }
 

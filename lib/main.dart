@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:clean_movies/domain/usecases/no_params.dart';
+import 'package:clean_movies/presentation/movie_app.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -96,30 +97,5 @@ Future<void> main() async {
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]));
   unawaited(getIt.init());
 
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
-        ),
-        body: const Center(
-          child: Text(
-            'Hello World',
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
-      ),
-    );
-  }
+  runApp(const MovieApp());
 }

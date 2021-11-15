@@ -1,12 +1,34 @@
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
+import 'package:clean_movies/domain/repositories/movie_repository.dart';
+import 'package:clean_movies/domain/usecases/get_coming_soon.dart';
+import 'package:clean_movies/domain/usecases/get_playing_now.dart';
+import 'package:clean_movies/domain/usecases/get_popular.dart';
+import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
 final getItInstance = GetIt.I;
 
-void init() {
+void init() async {
   //first dependency - httpClient to ApiClient
   getItInstance.registerLazySingleton<Client>(() => Client());
   getItInstance
       .registerLazySingleton<ApiClient>(() => ApiClient(getItInstance()));
+  //movieRemoteDataSource
+  getItInstance.registerLazySingleton<MovieRemoteDataSource>(
+      () => MovieRemoteDataSourceImpl(getItInstance()));
+  //usecases
+  getItInstance
+      .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
+  getItInstance
+      .registerLazySingleton<GetPopular>(() => GetPopular(getItInstance()));
+  getItInstance.registerLazySingleton<GetPlayingNow>(
+      () => GetPlayingNow(getItInstance()));
+  getItInstance.registerLazySingleton<GetComingSoon>(
+      () => GetComingSoon(getItInstance()));
+  //movie repository
+  getItInstance.registerLazySingleton<MovieRepository>(
+      () => MovieRepositoryImpl(getItInstance()));
 }

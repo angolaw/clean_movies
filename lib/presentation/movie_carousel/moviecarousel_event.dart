@@ -1,8 +1,9 @@
 part of 'moviecarousel_bloc.dart';
 
 abstract class MoviecarouselEvent extends Equatable {
-  const MoviecarouselEvent();
+  final int defaultIndex;
+  const MoviecarouselEvent({required this.defaultIndex});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [defaultIndex];
 }

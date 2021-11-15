@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:clean_movies/domain/usecases/no_params.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'di/get_it.dart' as getIt;
 import 'domain/entities/app_error.dart';
@@ -75,20 +76,26 @@ Future<void> main() async {
   // );
 
   //! USANDO INJEÇÃO DE DEPENDENCIAS
+  // unawaited(getIt.init());
+  // GetTrending getTrending = getIt.getItInstance<GetTrending>();
+  // final Either<AppError, List<MovieEntity?>> eitherTrending =
+  //     await getTrending(NoParams());
+  // eitherTrending.fold(
+  //   (l) {
+  //     print("Deu erro meo");
+  //     print(l.message);
+  //   },
+  //   (r) {
+  //     print("TRENDING");
+  //     print(r);
+  //   },
+  // );
+
+  WidgetsFlutterBinding.ensureInitialized();
+  unawaited(
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]));
   unawaited(getIt.init());
-  GetTrending getTrending = getIt.getItInstance<GetTrending>();
-  final Either<AppError, List<MovieEntity?>> eitherTrending =
-      await getTrending(NoParams());
-  eitherTrending.fold(
-    (l) {
-      print("Deu erro meo");
-      print(l.message);
-    },
-    (r) {
-      print("TRENDING");
-      print(r);
-    },
-  );
+
   runApp(const MyApp());
 }
 

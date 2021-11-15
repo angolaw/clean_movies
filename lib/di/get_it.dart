@@ -11,7 +11,7 @@ import 'package:http/http.dart';
 
 final getItInstance = GetIt.I;
 
-void init() async {
+Future<void> init() async {
   //first dependency - httpClient to ApiClient
   getItInstance.registerLazySingleton<Client>(() => Client());
   getItInstance

@@ -3,7 +3,7 @@ import 'package:clean_movies/common/extensions/size_extension.dart';
 
 class Logo extends StatelessWidget {
   final double height;
-  const Logo(this.height, {Key? key}) : super(key: key);
+  const Logo({required this.height, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

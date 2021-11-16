@@ -11,6 +11,14 @@ class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
   final GetTrending getTrending;
   MoviecarouselBloc({required this.getTrending})
       : super(MoviecarouselInitial()) {
-    on<MovieCarouselEvent>((event, emit) async {});
+    on<MovieCarouselEvent>((event, emit) async {
+      if (event is CarouselLoadEvent) {
+        final moviesEither = await getTrending(NoParams());
+        moviesEither.fold(
+            (l) => emit(MovieCarouselError()),
+            (movies) => emit(MovieCarouselLoaded(
+                movies: movies, defaultIndex: event.defaultIndex)));
+      }
+    });
   }
 }

@@ -35,36 +35,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<MoviecarouselBloc>(
-      create: (_) => movieCarouselBloc!,
-      child: Scaffold(
-        body: BlocBuilder<MoviecarouselBloc, MoviecarouselState>(
-          bloc: movieCarouselBloc!,
-          builder: (context, state) {
-            if (state is MovieCarouselLoaded) {
-              return Stack(
-                fit: StackFit.expand,
-                children: [
-                  FractionallySizedBox(
-                      alignment: Alignment.topCenter,
-                      heightFactor: 0.6,
-                      child: MovieCarouselWidget(
-                          movies: state.movies,
-                          defaultIndex: state.defaultIndex)),
-                  const FractionallySizedBox(
-                    alignment: Alignment.bottomCenter,
-                    heightFactor: 0.4,
-                    child: Placeholder(
-                      color: Colors.white,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<MoviecarouselBloc>(
+            create: (_) => movieCarouselBloc!,
+          ),
+          BlocProvider<MoviebackdropBloc>(
+            create: (_) => moviebackdropBloc!,
+          ),
+        ],
+        child: Scaffold(
+          body: BlocBuilder<MoviecarouselBloc, MoviecarouselState>(
+            bloc: movieCarouselBloc!,
+            builder: (context, state) {
+              if (state is MovieCarouselLoaded) {
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    FractionallySizedBox(
+                        alignment: Alignment.topCenter,
+                        heightFactor: 0.6,
+                        child: MovieCarouselWidget(
+                            movies: state.movies,
+                            defaultIndex: state.defaultIndex)),
+                    const FractionallySizedBox(
+                      alignment: Alignment.bottomCenter,
+                      heightFactor: 0.4,
+                      child: Placeholder(
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
-              );
-            }
-            return SizedBox.shrink();
-          },
-        ),
-      ),
-    );
+                  ],
+                );
+              }
+              return SizedBox.shrink();
+            },
+          ),
+        ));
   }
 }

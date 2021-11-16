@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:clean_movies/common/screenutil/screen_util.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:clean_movies/presentation/themes/theme_text.dart';

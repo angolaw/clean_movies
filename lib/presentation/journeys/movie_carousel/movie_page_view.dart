@@ -2,7 +2,6 @@ import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
-import 'package:clean_movies/presentation/journeys/movie_carousel/movie_card_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'animated_movie_card_widget.dart';
@@ -54,7 +53,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           );
         },
         pageSnapping: true,
-        itemCount: widget.movies.length ?? 0,
+        itemCount: widget.movies.length,
         onPageChanged: (index) {},
       ),
     );

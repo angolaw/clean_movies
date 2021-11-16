@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             }
+            return SizedBox.shrink();
           },
         ),
       ),

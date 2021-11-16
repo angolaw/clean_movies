@@ -15,7 +15,10 @@ class MovieCarouselWidget extends StatelessWidget {
     return Column(
       children: [
         MovieAppBar(),
-        MoviePageView(),
+        MoviePageView(
+          movies: movies,
+          defaultIndex: defaultIndex,
+        ),
       ],
     );
   }

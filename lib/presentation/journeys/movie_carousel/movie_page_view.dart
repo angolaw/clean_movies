@@ -5,6 +5,8 @@ import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_card_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'animated_movie_card_widget.dart';
+
 class MoviePageView extends StatefulWidget {
   final List<MovieEntity?> movies;
   final int defaultIndex;
@@ -44,9 +46,16 @@ class _MoviePageViewState extends State<MoviePageView> {
         controller: _pageController,
         itemBuilder: (context, index) {
           final MovieEntity movie = widget.movies[index]!;
-          return MovieCardWidget(
-              movieId: movie.id, posterPath: movie.posterPath);
+          return AnimatedMovieCardWidget(
+            movieId: movie.id,
+            posterPath: movie.posterPath,
+            index: index,
+            pageController: _pageController,
+          );
         },
+        pageSnapping: true,
+        itemCount: widget.movies.length ?? 0,
+        onPageChanged: (index) {},
       ),
     );
   }

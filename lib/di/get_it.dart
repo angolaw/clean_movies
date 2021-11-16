@@ -6,6 +6,7 @@ import 'package:clean_movies/domain/usecases/get_coming_soon.dart';
 import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
+import 'package:clean_movies/presentation/movie_carousel/moviecarousel_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -31,4 +32,7 @@ Future init() async {
   //movie repository
   getItInstance.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(getItInstance()));
+  //registrando o bloc
+  getItInstance
+      .registerFactory(() => MoviecarouselBloc(getTrending: getItInstance()));
 }

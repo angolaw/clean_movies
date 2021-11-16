@@ -7,6 +7,6 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('pngs/logo.png', height: height.h.toDouble());
+    return Image.asset('assets/pngs/logo.png', height: height.h.toDouble());
   }
 }

@@ -34,8 +34,8 @@ Future init() async {
   getItInstance.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(getItInstance()));
   //registrando o bloc
-  getItInstance
-      .registerFactory(() => MoviecarouselBloc(getTrending: getItInstance()));
-  //registrando o movieBackdropBloc
   getItInstance.registerFactory(() => MoviebackdropBloc());
+  getItInstance.registerFactory(() => MoviecarouselBloc(
+      getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
+  //registrando o movieBackdropBloc
 }

@@ -12,7 +12,7 @@ class MoviecarouselInitial extends MoviecarouselState {}
 class MovieCarouselError extends MoviecarouselState {}
 
 class MovieCarouselLoaded extends MoviecarouselState {
-  final List<MovieEntity> movies;
+  final List<MovieEntity?> movies;
   final int defaultIndex;
 
   MovieCarouselLoaded({required this.movies, required this.defaultIndex});

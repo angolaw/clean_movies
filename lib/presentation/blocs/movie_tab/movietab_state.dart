@@ -5,7 +5,7 @@ abstract class MovieTabState extends Equatable {
   const MovieTabState({required this.currentTabIndex});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [currentTabIndex];
 }
 
 class MovieTabInitial extends MovieTabState {

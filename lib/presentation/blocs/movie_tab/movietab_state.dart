@@ -13,7 +13,7 @@ class MovieTabInitial extends MovieTabState {
 }
 
 class MovieTabChanged extends MovieTabState {
-  final List<MovieEntity> movies;
+  final List<MovieEntity?> movies;
 
   const MovieTabChanged({required this.movies, required int currentTabIndex})
       : super(currentTabIndex: currentTabIndex);

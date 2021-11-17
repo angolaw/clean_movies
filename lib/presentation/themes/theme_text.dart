@@ -12,5 +12,18 @@ class ThemeText {
         fontSize: Sizes.dimen_20.sp.toDouble(),
         color: Colors.white,
       );
-  static getTextTheme() => TextTheme(headline6: _whiteHeadline6);
+  static TextStyle get whiteSubtitle1 => _poppinsTheme.subtitle1!.copyWith(
+        fontSize: Sizes.dimen_16.sp.toDouble(),
+        color: Colors.white,
+      );
+  static TextStyle get whiteBodyText2 => _poppinsTheme.bodyText2!.copyWith(
+      fontSize: Sizes.dimen_14.sp.toDouble(),
+      color: Colors.white,
+      wordSpacing: 0.25,
+      letterSpacing: 0.25,
+      height: 1.5);
+  static getTextTheme() => TextTheme(
+      headline6: _whiteHeadline6,
+      subtitle1: whiteSubtitle1,
+      bodyText2: whiteBodyText2);
 }

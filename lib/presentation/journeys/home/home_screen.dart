@@ -47,6 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocProvider<MoviebackdropBloc>(
             create: (_) => moviebackdropBloc!,
           ),
+          BlocProvider<MovieTabBloc>(
+            create: (_) => movieTabBloc!,
+          ),
         ],
         child: Scaffold(
           body: BlocBuilder<MoviecarouselBloc, MoviecarouselState>(

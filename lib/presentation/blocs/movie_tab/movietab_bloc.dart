@@ -19,7 +19,7 @@ class MovieTabBloc extends Bloc<MovieTabEvent, MovieTabState> {
       {required this.getPopular,
       required this.getPlayingNow,
       required this.getComingSoon})
-      : super(const MovieTabInitial()) {
+      : super(MovieTabInitial()) {
     on<MovieTabEvent>((event, emit) async {
       if (event is MovieTabChangedEvent) {
         Either<AppError, List<MovieEntity?>>? moviesEither;

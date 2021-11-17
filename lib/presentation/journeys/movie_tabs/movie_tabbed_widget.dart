@@ -23,6 +23,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   void initState() {
     // TODO: implement initState
     super.initState();
+    print("movieTabbedBloc : ${movieTabbedBloc.state}");
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: currentTabIndex));
   }
 

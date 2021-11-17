@@ -3,6 +3,7 @@ import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_blo
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_carousel_widget.dart';
+import 'package:clean_movies/presentation/journeys/movie_tabs/movie_tabbed_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,12 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             movies: state.movies,
                             defaultIndex: state.defaultIndex)),
                     const FractionallySizedBox(
-                      alignment: Alignment.bottomCenter,
-                      heightFactor: 0.4,
-                      child: Placeholder(
-                        color: Colors.white,
-                      ),
-                    ),
+                        alignment: Alignment.bottomCenter,
+                        heightFactor: 0.4,
+                        child: MovieTabbedWidget()),
                   ],
                 );
               }

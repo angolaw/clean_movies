@@ -8,6 +8,7 @@ import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
+import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -35,7 +36,14 @@ Future init() async {
       () => MovieRepositoryImpl(getItInstance()));
   //registrando o bloc
   getItInstance.registerFactory(() => MoviebackdropBloc());
+  //registrando o movieBackdropBloc
+
   getItInstance.registerFactory(() => MoviecarouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
-  //registrando o movieBackdropBloc
+  //registrando o MovieTabBloc
+  getItInstance.registerFactory(() => MovieTabBloc(
+        getPopular: GetPopular(getItInstance()),
+        getPlayingNow: GetPlayingNow(getItInstance()),
+        getComingSoon: GetComingSoon(getItInstance()),
+      ));
 }

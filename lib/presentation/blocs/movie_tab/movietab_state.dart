@@ -8,7 +8,9 @@ abstract class MovieTabState extends Equatable {
   List<Object> get props => [];
 }
 
-// class MovietabInitial extends MovieTabState {}
+class MovieTabInitial extends MovieTabState {
+  const MovieTabInitial() : super(currentTabIndex: 0);
+}
 
 class MovieTabChanged extends MovieTabState {
   final List<MovieEntity> movies;

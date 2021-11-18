@@ -19,7 +19,7 @@ class MovieTabBloc extends Bloc<MovieTabEvent, MovieTabState> {
       {required this.getPopular,
       required this.getPlayingNow,
       required this.getComingSoon})
-      : super(MovieTabInitial()) {
+      : super(MovieTabbedInitial()) {
     on<MovieTabEvent>((event, emit) async {
       if (event is MovieTabChangedEvent) {
         Either<AppError, List<MovieEntity?>>? moviesEither;
@@ -35,10 +35,11 @@ class MovieTabBloc extends Bloc<MovieTabEvent, MovieTabState> {
             break;
         }
         moviesEither?.fold(
-            (l) => MovieTabLoadError(currentTabIndex: event.currentTabIndex),
+            (l) =>
+                emit(MovieTabLoadError(currentTabIndex: event.currentTabIndex)),
             (movies) {
-          return MovieTabChanged(
-              movies: movies, currentTabIndex: event.currentTabIndex);
+          emit(MovieTabChanged(
+              movies: movies, currentTabIndex: event.currentTabIndex));
         });
       }
     });

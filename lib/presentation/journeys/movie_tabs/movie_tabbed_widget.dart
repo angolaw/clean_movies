@@ -22,9 +22,9 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
-    print("movieTabbedBloc : ${movieTabbedBloc.state}");
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: currentTabIndex));
+    super.initState();
+    print("Init state ${movieTabbedBloc.state}");
   }
 
   @override
@@ -44,6 +44,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                //tabs
                 for (var i = 0; i < MovieTabbedConstants.movieTabs.length; i++)
                   TabTitleWidget(
                     title: MovieTabbedConstants.movieTabs[i].title,
@@ -53,10 +54,13 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                   ),
               ],
             ),
+            //movies pertaining to the current tab
+
             if (state is MovieTabChanged)
               Expanded(
                 child: MovieListViewBuilder(movies: state.movies),
-              )
+              ),
+            if (state is! MovieTabChanged) Text("Kudos")
           ],
         ),
       );

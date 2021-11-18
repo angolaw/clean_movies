@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: MovieCarouselWidget(
                             movies: state.movies,
                             defaultIndex: state.defaultIndex)),
-                    const FractionallySizedBox(
+                    FractionallySizedBox(
                         alignment: Alignment.bottomCenter,
                         heightFactor: 0.4,
                         child: MovieTabbedWidget()),

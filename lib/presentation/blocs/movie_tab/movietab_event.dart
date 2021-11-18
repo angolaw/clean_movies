@@ -10,7 +10,7 @@ abstract class MovieTabEvent extends Equatable {
 class MovieTabChangedEvent extends MovieTabEvent {
   final int currentTabIndex;
 
-  const MovieTabChangedEvent({required this.currentTabIndex});
+  const MovieTabChangedEvent({this.currentTabIndex = 0});
 
   @override
   List<Object> get props => [currentTabIndex];

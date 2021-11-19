@@ -4,6 +4,7 @@ import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_blo
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_carousel_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_tabbed_widget.dart';
+import 'package:clean_movies/presentation/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

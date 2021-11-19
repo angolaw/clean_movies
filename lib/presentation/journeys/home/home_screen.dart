@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         child: Scaffold(
+          drawer: const NavigationDrawer(),
           body: BlocBuilder<MoviecarouselBloc, MoviecarouselState>(
             bloc: movieCarouselBloc!,
             builder: (context, state) {

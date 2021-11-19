@@ -18,7 +18,6 @@ class MovieListViewBuilder extends StatelessWidget {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             final MovieEntity movie = movies[index]!;
-            print("Thy movie ${movie.id}");
             return MovieTabCardWidget(
                 movieId: movie.id,
                 title: movie.title,

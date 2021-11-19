@@ -24,7 +24,6 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
     // TODO: implement initState
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: currentTabIndex));
     super.initState();
-    print("Init state ${movieTabbedBloc.state}");
   }
 
   @override
@@ -50,7 +49,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                     title: MovieTabbedConstants.movieTabs[i].title,
                     onTap: () => _onTabTapped(i),
                     isSelected: MovieTabbedConstants.movieTabs[i].index ==
-                        currentTabIndex,
+                        state.currentTabIndex,
                   ),
               ],
             ),
@@ -60,7 +59,6 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
               Expanded(
                 child: MovieListViewBuilder(movies: state.movies),
               ),
-            if (state is! MovieTabChanged) Text("Kudos")
           ],
         ),
       );
@@ -68,6 +66,10 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   }
 
   void _onTabTapped(int index) {
+    //todo - FIX INDEX != CURRENTTABINDEX
+    //? Study use of context.read to call add
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: index));
+    print("index $index e tabIndex $currentTabIndex");
+    print(index == currentTabIndex);
   }
 }

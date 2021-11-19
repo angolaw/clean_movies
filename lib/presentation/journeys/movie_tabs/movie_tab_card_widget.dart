@@ -3,6 +3,7 @@ import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:flutter/material.dart';
+import '../../../common/extensions/string_extensions.dart';
 
 class MovieTabCardWidget extends StatelessWidget {
   final int movieId;
@@ -33,7 +34,7 @@ class MovieTabCardWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: Sizes.dimen_4.h.toDouble()),
             child: Text(
-              title,
+              title.intelliTrim(),
               style: Theme.of(context).textTheme.bodyText2,
             ),
           )

@@ -1,3 +1,5 @@
+import 'package:clean_movies/common/constants/size_constants.dart';
+import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +33,7 @@ class NavigationExpandedListItem extends StatelessWidget {
             for (int i = 0; i < children.length; i++)
               NavigationSubListItem(
                 title: children[i],
-                onPressed: () {},
+                onPressed: () => onPressed(i),
               )
           ]),
     );

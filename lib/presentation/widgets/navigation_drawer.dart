@@ -1,11 +1,15 @@
 import 'package:clean_movies/common/constants/languages.dart';
 import 'package:clean_movies/common/constants/size_constants.dart';
+import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/domain/app_localizations.dart';
+import 'package:clean_movies/presentation/blocs/bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:clean_movies/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -40,10 +44,13 @@ class NavigationDrawer extends StatelessWidget {
             onPressed: () {},
           ),
           NavigationExpandedListItem(
-            title: 'Language',
+            title: TranslationsConstants.language.t(context),
             //1
             children: Languages.languages.map((e) => e.value).toList(),
-            onPressed: (index) {},
+            onPressed: (index) {
+              BlocProvider.of<LanguageBloc>(context).add(
+                  ToggleLanguageEvent(language: Languages.languages[index]));
+            },
           ),
           NavigationListItem(
             title: 'Feedback',

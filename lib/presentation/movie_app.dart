@@ -1,5 +1,6 @@
 import 'package:clean_movies/common/constants/languages.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';
+import 'package:clean_movies/domain/app_localizations.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:clean_movies/presentation/themes/theme_text.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class MovieApp extends StatelessWidget {
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        AppLocalizations.delegate,
       ],
       title: 'Movie App',
       theme: ThemeData(

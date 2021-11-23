@@ -1,6 +1,7 @@
 import 'package:clean_movies/common/constants/languages.dart';
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/domain/app_localizations.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:clean_movies/presentation/widgets/logo.dart';
@@ -35,7 +36,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           //1
           NavigationListItem(
-            title: 'Favorite Movies',
+            title: AppLocalizations.of(context)!.translate('favoriteMovies')!,
             onPressed: () {},
           ),
           NavigationExpandedListItem(

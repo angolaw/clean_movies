@@ -1,3 +1,4 @@
+import 'package:clean_movies/common/constants/languages.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:clean_movies/presentation/themes/theme_text.dart';
@@ -13,6 +14,8 @@ class MovieApp extends StatelessWidget {
     ScreenUtil.init(width: 414, height: 896);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
+      locale: Locale(Languages.languages[0].code),
       title: 'Movie App',
       theme: ThemeData(
         primaryColor: AppColor.vulcan,

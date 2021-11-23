@@ -40,7 +40,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           //1
           NavigationListItem(
-            title: AppLocalizations.of(context)!.translate('favoriteMovies')!,
+            title: TranslationsConstants.favoriteMovies.t(context),
             onPressed: () {},
           ),
           NavigationExpandedListItem(
@@ -53,11 +53,11 @@ class NavigationDrawer extends StatelessWidget {
             },
           ),
           NavigationListItem(
-            title: 'Feedback',
+            title: TranslationsConstants.feedback.t(context),
             onPressed: () {},
           ),
           NavigationListItem(
-            title: 'About',
+            title: TranslationsConstants.about.t(context),
             onPressed: () {},
           ),
         ],

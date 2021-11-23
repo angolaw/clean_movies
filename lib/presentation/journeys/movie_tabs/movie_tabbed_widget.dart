@@ -1,5 +1,6 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_list_view_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/tab_title_widget.dart';

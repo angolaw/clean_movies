@@ -9,6 +9,7 @@ part 'language_state.dart';
 
 class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
   LanguageBloc()
+      //* language default como ENGLISH
       : super(LanguageLoaded(locale: Locale(Languages.languages[0].code))) {
     on<LanguageEvent>((event, emit) {
       if (event is ToggleLanguageEvent) {

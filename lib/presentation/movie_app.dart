@@ -17,7 +17,7 @@ class MovieApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
-      locale: Locale(Languages.languages[1].code),
+      locale: Locale(Languages.languages[0].code),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

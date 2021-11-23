@@ -1,4 +1,5 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
+import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
@@ -35,6 +36,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
 
   @override
   Widget build(BuildContext context) {
+    var tabs = ['popular', 'now', 'soon'];
     return BlocBuilder<MovieTabBloc, MovieTabState>(builder: (context, state) {
       return Padding(
         padding: EdgeInsets.only(top: Sizes.dimen_4.h.toDouble()),
@@ -47,6 +49,8 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                 //tabs
                 for (var i = 0; i < MovieTabbedConstants.movieTabs.length; i++)
                   TabTitleWidget(
+                    // title:
+                    //     TranslationsConstants.'${tabs[i]}'.t(context),
                     title: MovieTabbedConstants.movieTabs[i].title,
                     onTap: () => _onTabTapped(i),
                     isSelected: MovieTabbedConstants.movieTabs[i].index ==
@@ -70,7 +74,5 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
     //todo - FIX INDEX != CURRENTTABINDEX
     //? Study use of context.read to call add
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: index));
-    print("index $index e tabIndex $currentTabIndex");
-    print(index == currentTabIndex);
   }
 }

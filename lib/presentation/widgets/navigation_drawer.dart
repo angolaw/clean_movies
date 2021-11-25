@@ -78,13 +78,14 @@ class NavigationDrawer extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
-            backgroundColor: AppColor.vulcan,
-            elevation: Sizes.dimen_32.toDouble(),
-            insetPadding: EdgeInsets.all(Sizes.dimen_32.w.toDouble()),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                    Radius.circular(Sizes.dimen_8.w.toDouble()))),
+          return AppDialog(
+            title: TranslationsConstants.about.t(context),
+            description: TranslationsConstants.aboutDescription.t(context),
+            buttonText: TranslationsConstants.okay.t(context),
+            image: Image.asset(
+              'assets/pngs/tmdb_logo.png',
+              height: Sizes.dimen_32.h.toDouble(),
+            ),
           );
         });
   }
@@ -104,6 +105,13 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Dialog(
+      backgroundColor: AppColor.vulcan,
+      elevation: Sizes.dimen_32.toDouble(),
+      insetPadding: EdgeInsets.all(Sizes.dimen_32.w.toDouble()),
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.all(Radius.circular(Sizes.dimen_8.w.toDouble()))),
+    );
   }
 }

@@ -22,8 +22,13 @@ class ThemeText {
       wordSpacing: 0.25,
       letterSpacing: 0.25,
       height: 1.5);
+  static TextStyle get _whiteHeadline5 => _poppinsTheme.headline6!.copyWith(
+        fontSize: Sizes.dimen_24.sp.toDouble(),
+        color: Colors.white,
+      );
   static getTextTheme() => TextTheme(
       headline6: _whiteHeadline6,
+      headline5: _whiteHeadline5,
       subtitle1: whiteSubtitle1,
       bodyText2: whiteBodyText2);
 }

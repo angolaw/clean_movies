@@ -7,6 +7,7 @@ import 'package:clean_movies/domain/app_localizations.dart';
 import 'package:clean_movies/presentation/blocs/bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
+import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:clean_movies/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,10 +64,46 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavigationListItem(
             title: TranslationsConstants.about.t(context),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              _showDialog(context);
+            },
           ),
         ],
       )),
     );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            backgroundColor: AppColor.vulcan,
+            elevation: Sizes.dimen_32.toDouble(),
+            insetPadding: EdgeInsets.all(Sizes.dimen_32.w.toDouble()),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                    Radius.circular(Sizes.dimen_8.w.toDouble()))),
+          );
+        });
+  }
+}
+
+class AppDialog extends StatelessWidget {
+  final String title, description, buttonText;
+  final Widget? image;
+
+  const AppDialog(
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.buttonText,
+      this.image})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

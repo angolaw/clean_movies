@@ -7,4 +7,6 @@ class TranslationsConstants {
   static const String popular = 'popular';
   static const String now = 'now';
   static const String soon = 'soon';
+  static const String okay = 'okay';
+  static const String aboutDescription = 'aboutDescription';
 }

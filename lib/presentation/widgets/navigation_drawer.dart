@@ -10,6 +10,7 @@ import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.d
 import 'package:clean_movies/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wiredash/wiredash.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -54,7 +55,11 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavigationListItem(
             title: TranslationsConstants.feedback.t(context),
-            onPressed: () {},
+            onPressed: () {
+              print("ON");
+              Navigator.of(context).pop();
+              Wiredash.of(context)?.show();
+            },
           ),
           NavigationListItem(
             title: TranslationsConstants.about.t(context),

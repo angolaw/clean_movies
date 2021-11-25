@@ -49,8 +49,6 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                 //tabs
                 for (var i = 0; i < MovieTabbedConstants.movieTabs.length; i++)
                   TabTitleWidget(
-                    // title:
-                    //     TranslationsConstants.'${tabs[i]}'.t(context),
                     title: MovieTabbedConstants.movieTabs[i].title,
                     onTap: () => _onTabTapped(i),
                     isSelected: MovieTabbedConstants.movieTabs[i].index ==
@@ -71,7 +69,6 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   }
 
   void _onTabTapped(int index) {
-    //todo - FIX INDEX != CURRENTTABINDEX
     //? Study use of context.read to call add
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: index));
   }

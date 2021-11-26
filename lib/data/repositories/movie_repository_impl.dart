@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
@@ -13,8 +15,10 @@ class MovieRepositoryImpl implements MovieRepository {
     try {
       final movies = await remoteDataSource.getTrending();
       return right(movies);
+    } on SocketException {
+      return left(const AppError(AppErrorType.network));
     } on Exception {
-      return left(const AppError("Algo deu errado"));
+      return left(const AppError(AppErrorType.api));
     }
   }
 
@@ -23,8 +27,10 @@ class MovieRepositoryImpl implements MovieRepository {
     try {
       final movies = await remoteDataSource.getComingSoon();
       return right(movies);
+    } on SocketException {
+      return left(const AppError(AppErrorType.network));
     } on Exception {
-      return left(const AppError("Algo deu errado"));
+      return left(const AppError(AppErrorType.api));
     }
   }
 
@@ -33,8 +39,10 @@ class MovieRepositoryImpl implements MovieRepository {
     try {
       final movies = await remoteDataSource.getPlayingNow();
       return right(movies);
+    } on SocketException {
+      return left(const AppError(AppErrorType.network));
     } on Exception {
-      return left(const AppError("Algo deu errado"));
+      return left(const AppError(AppErrorType.api));
     }
   }
 
@@ -43,8 +51,10 @@ class MovieRepositoryImpl implements MovieRepository {
     try {
       final movies = await remoteDataSource.getPopular();
       return right(movies);
+    } on SocketException {
+      return left(const AppError(AppErrorType.network));
     } on Exception {
-      return left(const AppError("Algo deu errado"));
+      return left(const AppError(AppErrorType.api));
     }
   }
 }

@@ -5,6 +5,7 @@ import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_list_view_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/tab_title_widget.dart';
+import 'package:clean_movies/presentation/widgets/app_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,7 +57,12 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                   ),
               ],
             ),
-            if (state is MovieTabLoadError) AppErrorWidget(),
+            if (state is MovieTabLoadError)
+              AppErrorWidget(
+                errorType: state.errorType,
+                onPressed: () => movieTabbedBloc.add(
+                    MovieTabChangedEvent(currentTabIndex: currentTabIndex)),
+              ),
             //movies pertaining to the current tab
 
             if (state is MovieTabChanged)

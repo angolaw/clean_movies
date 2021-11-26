@@ -9,6 +9,7 @@ import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_blo
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_carousel_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_tabbed_widget.dart';
+import 'package:clean_movies/presentation/widgets/app_error_widget.dart';
 import 'package:clean_movies/presentation/widgets/button.dart';
 import 'package:clean_movies/presentation/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 );
               } else if (state is MovieCarouselError) {
-                return CarouselLoadErrorWidget(
+                return AppErrorWidget(
                   onPressed: () => movieCarouselBloc!
                       .add(CarouselLoadEvent(defaultIndex: 0)),
                   errorType: state.errorType,
@@ -92,45 +93,5 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ));
-  }
-}
-
-class AppErrorWidget extends StatelessWidget {
-  final AppErrorType errorType;
-  final VoidCallback onPressed;
-  const AppErrorWidget(
-      {Key? key, required this.errorType, required this.onPressed})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_32.w.toDouble()),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            errorType == AppErrorType.api
-                ? TranslationsConstants.somethingWentWrong.t(context)
-                : TranslationsConstants.checkNetwork.t(context),
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          ButtonBar(
-            children: [
-              Button(
-                onPressed: onPressed,
-                text: TranslationsConstants.retry,
-              ),
-              Button(
-                onPressed: () => Wiredash.of(context)?.show(),
-                text: TranslationsConstants.feedback,
-              ),
-            ],
-          )
-        ],
-      ),
-    );
   }
 }

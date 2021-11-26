@@ -1,4 +1,5 @@
 import 'package:clean_movies/di/get_it.dart';
+import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
@@ -74,10 +75,28 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: MovieTabbedWidget()),
                   ],
                 );
+              } else if (state is MovieCarouselError) {
+                return CarouselLoadErrorWidget(
+                  bloc: movieCarouselBloc!,
+                  errorType: state.errorType,
+                );
               }
               return SizedBox.shrink();
             },
           ),
         ));
+  }
+}
+
+class CarouselLoadErrorWidget extends StatelessWidget {
+  final AppErrorType errorType;
+  final MoviecarouselBloc bloc;
+  const CarouselLoadErrorWidget(
+      {Key? key, required this.errorType, required this.bloc})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

@@ -37,7 +37,6 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
 
   @override
   Widget build(BuildContext context) {
-    var tabs = ['popular', 'now', 'soon'];
     return BlocBuilder<MovieTabBloc, MovieTabState>(builder: (context, state) {
       return Padding(
         padding: EdgeInsets.only(top: Sizes.dimen_4.h.toDouble()),
@@ -57,6 +56,8 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                   ),
               ],
             ),
+            //empty
+
             if (state is MovieTabLoadError)
               AppErrorWidget(
                 errorType: state.errorType,
@@ -66,9 +67,16 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
             //movies pertaining to the current tab
 
             if (state is MovieTabChanged)
-              Expanded(
-                child: MovieListViewBuilder(movies: state.movies),
-              ),
+              state.movies.isEmpty
+                  ? Expanded(
+                      child: Center(
+                        child: Text(TranslationsConstants.noMovies.t(context),
+                            style: Theme.of(context).textTheme.subtitle1),
+                      ),
+                    )
+                  : Expanded(
+                      child: MovieListViewBuilder(movies: state.movies),
+                    ),
           ],
         ),
       );

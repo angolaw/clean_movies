@@ -56,6 +56,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                   ),
               ],
             ),
+            if (state is MovieTabLoadError) AppErrorWidget(),
             //movies pertaining to the current tab
 
             if (state is MovieTabChanged)

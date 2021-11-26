@@ -95,10 +95,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class CarouselLoadErrorWidget extends StatelessWidget {
+class AppErrorWidget extends StatelessWidget {
   final AppErrorType errorType;
   final VoidCallback onPressed;
-  const CarouselLoadErrorWidget(
+  const AppErrorWidget(
       {Key? key, required this.errorType, required this.onPressed})
       : super(key: key);
 

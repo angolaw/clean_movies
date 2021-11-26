@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wiredash/wiredash.dart';
 
+import 'app_dialog.dart';
+
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
@@ -88,30 +90,5 @@ class NavigationDrawer extends StatelessWidget {
             ),
           );
         });
-  }
-}
-
-class AppDialog extends StatelessWidget {
-  final String title, description, buttonText;
-  final Widget? image;
-
-  const AppDialog(
-      {Key? key,
-      required this.title,
-      required this.description,
-      required this.buttonText,
-      this.image})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: AppColor.vulcan,
-      elevation: Sizes.dimen_32.toDouble(),
-      insetPadding: EdgeInsets.all(Sizes.dimen_32.w.toDouble()),
-      shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.all(Radius.circular(Sizes.dimen_8.w.toDouble()))),
-    );
   }
 }

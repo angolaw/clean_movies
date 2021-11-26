@@ -1,3 +1,7 @@
+import 'package:clean_movies/common/constants/size_constants.dart';
+import 'package:clean_movies/common/constants/translation_constants.dart';
+import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
@@ -5,9 +9,11 @@ import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_blo
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_carousel_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_tabbed_widget.dart';
+import 'package:clean_movies/presentation/widgets/button.dart';
 import 'package:clean_movies/presentation/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wiredash/wiredash.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -90,13 +96,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class CarouselLoadErrorWidget extends StatelessWidget {
   final AppErrorType errorType;
-  final MoviecarouselBloc bloc;
+  final VoidCallback onPressed;
   const CarouselLoadErrorWidget(
-      {Key? key, required this.errorType, required this.bloc})
+      {Key? key, required this.errorType, required this.onPressed})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_32.w.toDouble()),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            errorType == AppErrorType.api
+                ? TranslationsConstants.somethingWentWrong.t(context)
+                : TranslationsConstants.checkNetwork.t(context),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          ButtonBar(
+            children: [
+              Button(
+                onPressed: onPressed,
+                text: TranslationsConstants.retry,
+              ),
+              Button(
+                onPressed: () => Wiredash.of(context)?.show(),
+                text: TranslationsConstants.feedback,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

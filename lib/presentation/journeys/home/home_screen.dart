@@ -83,7 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               } else if (state is MovieCarouselError) {
                 return CarouselLoadErrorWidget(
-                  bloc: movieCarouselBloc!,
+                  onPressed: () => movieCarouselBloc!
+                      .add(CarouselLoadEvent(defaultIndex: 0)),
                   errorType: state.errorType,
                 );
               }

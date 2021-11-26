@@ -81,9 +81,9 @@ class NavigationDrawer extends StatelessWidget {
         context: context,
         builder: (context) {
           return AppDialog(
-            title: TranslationsConstants.about.t(context),
-            description: TranslationsConstants.aboutDescription.t(context),
-            buttonText: TranslationsConstants.okay.t(context),
+            title: TranslationsConstants.about,
+            description: TranslationsConstants.aboutDescription,
+            buttonText: TranslationsConstants.okay,
             image: Image.asset(
               'assets/pngs/tmdb_logo.png',
               height: Sizes.dimen_32.h.toDouble(),

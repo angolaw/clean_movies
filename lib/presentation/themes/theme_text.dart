@@ -26,9 +26,15 @@ class ThemeText {
         fontSize: Sizes.dimen_24.sp.toDouble(),
         color: Colors.white,
       );
+  static TextStyle get _whiteButton => _poppinsTheme.button!.copyWith(
+        fontSize: Sizes.dimen_14.sp.toDouble(),
+        color: Colors.white,
+      );
   static getTextTheme() => TextTheme(
-      headline6: _whiteHeadline6,
-      headline5: _whiteHeadline5,
-      subtitle1: whiteSubtitle1,
-      bodyText2: whiteBodyText2);
+        headline6: _whiteHeadline6,
+        headline5: _whiteHeadline5,
+        subtitle1: whiteSubtitle1,
+        bodyText2: whiteBodyText2,
+        button: _whiteButton,
+      );
 }

@@ -9,4 +9,7 @@ class TranslationsConstants {
   static const String soon = 'soon';
   static const String okay = 'okay';
   static const String aboutDescription = 'aboutDescription';
+  static const String retry = 'retry';
+  static const String somethingWentWrong = 'somethingWentWrong';
+  static const String checkNetwork = 'checkNetwork';
 }

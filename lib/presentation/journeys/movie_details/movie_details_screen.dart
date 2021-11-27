@@ -40,7 +40,10 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
             if (state is MovieDetailLoaded) {
-              return Container();
+              return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [BigPoster(movie: state.movieDetailEntity)]);
             } else if (state is MovieDetailError) {
               return Container();
             }

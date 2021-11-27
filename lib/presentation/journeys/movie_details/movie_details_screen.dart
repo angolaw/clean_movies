@@ -4,6 +4,8 @@ import 'package:clean_movies/presentation/journeys/movie_details/movie_details_a
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'big_poster.dart';
+
 class MovieDetailsScreen extends StatefulWidget {
   final MovieDetailsArgument movieDetailsArgument;
   const MovieDetailsScreen({Key? key, required this.movieDetailsArgument})

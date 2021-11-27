@@ -53,6 +53,6 @@ Future init() async {
   getItInstance.registerSingleton<LanguageBloc>(LanguageBloc());
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(repository: getItInstance()));
-  getItInstance.registerFactory<MovieDetailBloc>(
-      () => MovieDetailBloc(getMovieDetail: getItInstance()));
+  getItInstance.registerSingleton<MovieDetailBloc>(
+      MovieDetailBloc(getMovieDetail: getItInstance()));
 }

@@ -4,7 +4,7 @@ import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/domain/app_localizations.dart';
-import 'package:clean_movies/presentation/blocs/bloc/language_bloc.dart';
+import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';

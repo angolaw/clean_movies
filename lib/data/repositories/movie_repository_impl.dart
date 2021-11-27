@@ -60,8 +60,14 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Either<AppError, MovieDetailEntity?>> getMovieDetail(int id) {
-    // TODO: implement getMovieDetail
-    throw UnimplementedError();
+  Future<Either<AppError, MovieDetailEntity?>> getMovieDetail(int id) async {
+    try {
+      final movie = await remoteDataSource.getMovieDetail(id);
+      return right(movie);
+    } on SocketException {
+      return left(const AppError(AppErrorType.network));
+    } on Exception {
+      return left(const AppError(AppErrorType.api));
+    }
   }
 }

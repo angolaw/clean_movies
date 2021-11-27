@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
+import 'package:clean_movies/presentation/themes/theme_text.dart';
 import 'package:flutter/material.dart';
 
 class BigPoster extends StatelessWidget {

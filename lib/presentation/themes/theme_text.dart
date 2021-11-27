@@ -31,10 +31,7 @@ class ThemeText {
         fontSize: Sizes.dimen_14.sp.toDouble(),
         color: Colors.white,
       );
-  TextStyle get greySubtitle1 =>
-      _poppinsTheme.subtitle1!.copyWith(color: Colors.grey);
-  TextStyle get violetHeadline6 =>
-      _poppinsTheme.headline6!.copyWith(color: AppColor.violet);
+
   static getTextTheme() => TextTheme(
         headline6: _whiteHeadline6,
         headline5: _whiteHeadline5,
@@ -42,4 +39,10 @@ class ThemeText {
         bodyText2: whiteBodyText2,
         button: _whiteButton,
       );
+}
+
+extension ThemeTextExtension on TextTheme {
+  TextStyle? get greySubtitle1 => subtitle1?.copyWith(color: Colors.grey);
+
+  TextStyle? get violetHeadline6 => headline6?.copyWith(color: AppColor.violet);
 }

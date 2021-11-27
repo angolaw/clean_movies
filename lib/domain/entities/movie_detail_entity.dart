@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class MovieDetailEntity extends Equatable {
-  final String id;
+  final int id;
   final String title;
-  final String releaseDate;
-  final String overview;
-  final num voteAverage;
-  final String posterPath;
-  final String backdropPath;
+  final String? releaseDate;
+  final String? overview;
+  final num? voteAverage;
+  final String? posterPath;
+  final String? backdropPath;
 
   const MovieDetailEntity(
       {required this.id,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
@@ -56,5 +57,11 @@ class MovieRepositoryImpl implements MovieRepository {
     } on Exception {
       return left(const AppError(AppErrorType.api));
     }
+  }
+
+  @override
+  Future<Either<AppError, MovieDetailEntity?>> getMovieDetail(int id) {
+    // TODO: implement getMovieDetail
+    throw UnimplementedError();
   }
 }

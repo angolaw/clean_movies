@@ -1,4 +1,5 @@
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/models/movie_detail_model.dart';
 import 'package:clean_movies/data/models/movie_model.dart';
 import 'package:clean_movies/data/models/movie_result_model.dart';
 
@@ -7,6 +8,7 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel?>> getPopular();
   Future<List<MovieModel?>> getPlayingNow();
   Future<List<MovieModel?>> getComingSoon();
+  Future<MovieDetailModel> getMovieDetail(int id);
 }
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
@@ -40,5 +42,13 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final response = await _client.get('movie/upcoming');
     final movies = MoviesResultModel.fromJson(response).movies;
     return movies!;
+  }
+
+  @override
+  Future<MovieDetailModel> getMovieDetail(int id) async {
+    final response = await _client.get('movie/$id');
+    final movie = MovieDetailModel.fromJson(response);
+    print(movie);
+    return movie;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,6 +31,10 @@ class ThemeText {
         fontSize: Sizes.dimen_14.sp.toDouble(),
         color: Colors.white,
       );
+  TextStyle get greySubtitle1 =>
+      _poppinsTheme.subtitle1!.copyWith(color: Colors.grey);
+  TextStyle get violetHeadline6 =>
+      _poppinsTheme.headline6!.copyWith(color: AppColor.violet);
   static getTextTheme() => TextTheme(
         headline6: _whiteHeadline6,
         headline5: _whiteHeadline5,

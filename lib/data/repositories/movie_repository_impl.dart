@@ -88,7 +88,7 @@ class MovieRepositoryImpl implements MovieRepository {
   @override
   Future<Either<AppError, List<VideoEntity?>>> getVideos(int id) async {
     try {
-      final videos = await remoteDataSource.getVideos(id: id);
+      final videos = await remoteDataSource.getVideos(id);
       return Right(videos);
     } on SocketException {
       return const Left(AppError(AppErrorType.network));

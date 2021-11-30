@@ -63,6 +63,6 @@ Future init() async {
   //register cast bloc
   getItInstance
       .registerFactory<CastBloc>(() => CastBloc(getCast: getItInstance()));
-  getItInstance.registerSingleton<MovieDetailBloc>(MovieDetailBloc(
+  getItInstance.registerFactory<MovieDetailBloc>(() => MovieDetailBloc(
       getMovieDetail: getItInstance(), castBloc: getItInstance()));
 }

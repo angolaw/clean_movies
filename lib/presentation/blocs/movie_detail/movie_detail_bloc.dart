@@ -21,6 +21,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
             await getMovieDetail(MovieParams(id: event.movieId));
         eitherResponse.fold((l) => emit(MovieDetailError()),
             (r) => emit(MovieDetailLoaded(movieDetailEntity: r!)));
+        castBloc.add(CastLoadEvent(movieId: event.movieId));
       }
     });
   }

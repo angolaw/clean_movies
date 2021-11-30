@@ -12,7 +12,6 @@ class ApiClient {
   dynamic get(String path, {Map<dynamic, dynamic>? params}) async {
     final response = await _client.get(
       Uri.parse(
-        // '${ApiConstants.BASE_URL}$path?api_key=${ApiConstants.API_KEY}'),
         getPath(path, params),
       ),
       headers: {

@@ -96,4 +96,11 @@ class MovieRepositoryImpl implements MovieRepository {
       return const Left(AppError(AppErrorType.api));
     }
   }
+
+  @override
+  Future<Either<AppError, List<MovieEntity?>>> getSearchedMovies(
+      String searchTerm) {
+    // TODO: implement getSearchedMovies
+    throw UnimplementedError();
+  }
 }

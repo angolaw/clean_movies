@@ -8,12 +8,14 @@ import 'package:clean_movies/domain/usecases/get_movie_detail.dart';
 import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
+import 'package:clean_movies/domain/usecases/get_videos.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
+import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -63,6 +65,14 @@ Future init() async {
   //register cast bloc
   getItInstance
       .registerFactory<CastBloc>(() => CastBloc(getCast: getItInstance()));
+  //register videosBloc
+  getItInstance.registerFactory<VideosBloc>(
+      () => VideosBloc(getVideos: getItInstance()));
+  //register usecase
+  getItInstance.registerLazySingleton<GetVideos>(
+      () => GetVideos(repository: getItInstance()));
   getItInstance.registerFactory<MovieDetailBloc>(() => MovieDetailBloc(
-      getMovieDetail: getItInstance(), castBloc: getItInstance()));
+      videosBloc: getItInstance(),
+      getMovieDetail: getItInstance(),
+      castBloc: getItInstance()));
 }

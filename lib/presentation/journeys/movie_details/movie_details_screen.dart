@@ -7,7 +7,9 @@ import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
+import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
+import 'package:clean_movies/presentation/journeys/movie_details/videos_widget.dart';
 import 'package:clean_movies/presentation/themes/theme_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +28,7 @@ class MovieDetailsScreen extends StatefulWidget {
 class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   MovieDetailBloc? movieDetailBloc;
   CastBloc? _castBloc;
+  VideosBloc? _videosBloc;
 
   @override
   void initState() {
@@ -33,6 +36,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     super.initState();
     movieDetailBloc = getItInstance<MovieDetailBloc>();
     _castBloc = movieDetailBloc?.castBloc;
+    _videosBloc = movieDetailBloc?.videosBloc;
     movieDetailBloc?.add(
         MovieDetailLoadEvent(movieId: widget.movieDetailsArgument.movieId));
   }
@@ -42,6 +46,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     // TODO: implement dispose
     movieDetailBloc?.close();
     _castBloc?.close();
+    _videosBloc?.close();
     super.dispose();
   }
 
@@ -53,7 +58,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           BlocProvider<MovieDetailBloc>.value(
             value: movieDetailBloc!,
           ),
-          BlocProvider<CastBloc>.value(value: _castBloc!)
+          BlocProvider<CastBloc>.value(value: _castBloc!),
+          BlocProvider<VideosBloc>.value(value: _videosBloc!),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
@@ -80,6 +86,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             style: Theme.of(context).textTheme.headline6),
                       ),
                       CastWidget(),
+                      VideosWidget(videosBloc: _videosBloc!)
                     ]),
               );
             } else if (state is MovieDetailError) {

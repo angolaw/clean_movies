@@ -12,9 +12,9 @@ class VideosInitial extends VideosState {}
 class NoVideos extends VideosState {}
 
 class VideosLoaded extends VideosState {
-  final List<MovieEntity?> movies;
-  const VideosLoaded({required this.movies});
+  final List<MovieEntity?> videos;
+  const VideosLoaded({required this.videos});
 
   @override
-  List<Object> get props => [movies];
+  List<Object> get props => [videos];
 }

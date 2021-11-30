@@ -87,3 +87,20 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     );
   }
 }
+
+class CastWidget extends StatelessWidget {
+  const CastWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder(
+      builder: (context, state) {
+        if (state is CastLoaded) {
+          return Container();
+        } else {
+          return const SizedBox.shrink();
+        }
+      },
+    );
+  }
+}

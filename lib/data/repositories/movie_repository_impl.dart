@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/domain/entities/cast_entity.dart';
 import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
@@ -66,6 +67,18 @@ class MovieRepositoryImpl implements MovieRepository {
       return right(movie);
     } on SocketException {
       return left(const AppError(AppErrorType.network));
+    } on Exception {
+      return left(const AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, List<CastEntity?>>> getCastCrew(int id) async {
+    try {
+      final cast = await remoteDataSource.getCastCrew(id);
+      return Right(cast);
+    } on SocketException {
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
       return left(const AppError(AppErrorType.api));
     }

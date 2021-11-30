@@ -1,10 +1,12 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/presentation/blocs/search_movies/search_movies_bloc.dart';
 import 'package:clean_movies/presentation/journeys/search_movies/search_movie_card.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';
+import 'package:clean_movies/presentation/themes/theme_text.dart';
 import 'package:clean_movies/presentation/widgets/app_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +19,7 @@ class CustomSearchDelegate extends SearchDelegate {
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
         inputDecorationTheme: InputDecorationTheme(
-      hintStyle: Theme.of(context).textTheme.subtitle1,
+      hintStyle: Theme.of(context).textTheme.greySubtitle1,
     ));
   }
 

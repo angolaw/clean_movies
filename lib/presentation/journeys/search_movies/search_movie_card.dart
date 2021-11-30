@@ -5,6 +5,7 @@ import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_screen.dart';
+import 'package:clean_movies/presentation/themes/theme_text.dart';
 import 'package:flutter/material.dart';
 
 class SearchMovieCard extends StatelessWidget {
@@ -67,7 +68,7 @@ class SearchMovieCard extends StatelessWidget {
                     movie.overview,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.greyCaption,
                   ),
                 ],
               ),

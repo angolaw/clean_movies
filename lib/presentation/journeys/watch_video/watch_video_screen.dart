@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/domain/entities/video_entity.dart';
 import 'package:clean_movies/presentation/journeys/watch_video/watch_videos_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../../common/extensions/size_extension.dart';
 
 class WatchVideoScreen extends StatefulWidget {
   final WatchVideosArguments watchVideoArguments;
@@ -77,19 +80,19 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                       for (int i = 0; i < _videos.length; i++)
                         Container(
                           height: Sizes.dimen_60.h.toDouble(),
-                          padding:
-                              EdgeInsets.symmetric(vertical: Sizes.dimen_8.h),
+                          padding: EdgeInsets.symmetric(
+                              vertical: Sizes.dimen_8.h.toDouble()),
                           child: Row(
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () {
-                                  _controller?.load(_videos[i].key);
+                                  _controller?.load(_videos[i]!.key);
                                   _controller?.play();
                                 },
                                 child: CachedNetworkImage(
-                                  width: Sizes.dimen_200.w,
+                                  width: Sizes.dimen_200.w.toDouble(),
                                   imageUrl: YoutubePlayer.getThumbnail(
-                                    videoId: _videos[i].key,
+                                    videoId: _videos[i]!.key,
                                     quality: ThumbnailQuality.high,
                                   ),
                                 ),
@@ -97,9 +100,9 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: Sizes.dimen_8.w),
+                                      horizontal: Sizes.dimen_8.w.toDouble()),
                                   child: Text(
-                                    _videos[i].title,
+                                    _videos[i]!.title,
                                     style:
                                         Theme.of(context).textTheme.subtitle1,
                                   ),

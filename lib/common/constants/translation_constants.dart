@@ -14,4 +14,5 @@ class TranslationsConstants {
   static const String checkNetwork = 'checkNetwork';
   static const String noMovies = 'noMovies';
   static const String cast = 'cast';
+  static const String watchTrailers = 'watchTrailers';
 }

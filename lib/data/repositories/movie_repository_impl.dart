@@ -5,6 +5,7 @@ import 'package:clean_movies/domain/entities/cast_entity.dart';
 import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
+import 'package:clean_movies/domain/entities/video_entity.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -80,7 +81,19 @@ class MovieRepositoryImpl implements MovieRepository {
     } on SocketException {
       return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return left(const AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, List<VideoEntity?>>> getVideos(int id) async {
+    try {
+      final videos = await remoteDataSource.getVideos(id: id);
+      return Right(videos);
+    } on SocketException {
+      return const Left(AppError(AppErrorType.network));
+    } on Exception {
+      return const Left(AppError(AppErrorType.api));
     }
   }
 }

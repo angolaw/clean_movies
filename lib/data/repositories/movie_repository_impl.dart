@@ -99,8 +99,14 @@ class MovieRepositoryImpl implements MovieRepository {
 
   @override
   Future<Either<AppError, List<MovieEntity?>>> getSearchedMovies(
-      String searchTerm) {
-    // TODO: implement getSearchedMovies
-    throw UnimplementedError();
+      String searchTerm) async {
+    try {
+      final movies = await remoteDataSource.getSearchedMovies(searchTerm);
+      return Right(movies);
+    } on SocketException {
+      return const Left(AppError(AppErrorType.network));
+    } on Exception {
+      return const Left(AppError(AppErrorType.api));
+    }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
+import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
@@ -55,7 +57,13 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       ),
                       child: Text(state.movieDetailEntity.overview!,
                           style: Theme.of(context).textTheme.bodyText2),
-                    )
+                    ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Sizes.dimen_16.w.toDouble(),
+                        ),
+                        child: Text(TranslationsConstants.cast.t(context),
+                            style: Theme.of(context).textTheme.headline6))
                   ]);
             } else if (state is MovieDetailError) {
               return Container();

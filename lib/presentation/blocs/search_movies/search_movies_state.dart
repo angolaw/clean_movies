@@ -17,3 +17,12 @@ class SearchMoviesError extends SearchMoviesState {
   @override
   List<Object> get props => [errorType];
 }
+
+class SearchMoviesCompleted extends SearchMoviesState {
+  final List<MovieEntity?> movies;
+
+  SearchMoviesCompleted({required this.movies});
+
+  @override
+  List<Object> get props => [movies];
+}

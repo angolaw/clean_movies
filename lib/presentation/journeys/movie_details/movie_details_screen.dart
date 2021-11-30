@@ -45,31 +45,38 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider<MovieDetailBloc>.value(
-        value: movieDetailBloc!,
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<MovieDetailBloc>.value(
+            value: movieDetailBloc!,
+          ),
+          BlocProvider<CastBloc>.value(value: _castBloc!)
+        ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
             if (state is MovieDetailLoaded) {
-              return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    BigPoster(movie: state.movieDetailEntity),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Sizes.dimen_16.w.toDouble(),
-                        vertical: Sizes.dimen_8.h.toDouble(),
-                      ),
-                      child: Text(state.movieDetailEntity.overview!,
-                          style: Theme.of(context).textTheme.bodyText2),
-                    ),
-                    Padding(
+              return SingleChildScrollView(
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      BigPoster(movie: state.movieDetailEntity),
+                      Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Sizes.dimen_16.w.toDouble(),
+                          vertical: Sizes.dimen_8.h.toDouble(),
                         ),
-                        child: Text(TranslationsConstants.cast.t(context),
-                            style: Theme.of(context).textTheme.headline6))
-                  ]);
+                        child: Text(state.movieDetailEntity.overview!,
+                            style: Theme.of(context).textTheme.bodyText2),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Sizes.dimen_16.w.toDouble(),
+                          ),
+                          child: Text(TranslationsConstants.cast.t(context),
+                              style: Theme.of(context).textTheme.headline6))
+                    ]),
+              );
             } else if (state is MovieDetailError) {
               return Container();
             }

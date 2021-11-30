@@ -7,10 +7,10 @@ abstract class CastEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadCastEvent extends CastEvent {
+class CastLoadEvent extends CastEvent {
   final int movieId;
 
-  LoadCastEvent({required this.movieId});
+  const CastLoadEvent({required this.movieId});
 
   @override
   List<Object> get props => [movieId];

@@ -13,4 +13,5 @@ class TranslationsConstants {
   static const String somethingWentWrong = 'somethingWentWrong';
   static const String checkNetwork = 'checkNetwork';
   static const String noMovies = 'noMovies';
+  static const String cast = 'cast';
 }

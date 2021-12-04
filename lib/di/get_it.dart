@@ -10,6 +10,7 @@ import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/domain/usecases/get_videos.dart';
+import 'package:clean_movies/domain/usecases/save_movie.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
@@ -92,4 +93,8 @@ Future init() async {
       () => SearchMovies(repository: getItInstance()));
   getItInstance.registerFactory<SearchMoviesBloc>(
       () => SearchMoviesBloc(searchMovies: getItInstance()));
+
+  //! LOCAL DATA USECASES
+  getItInstance.registerLazySingleton<SaveMovie>(
+      () => SaveMovie(repository: getItInstance()));
 }

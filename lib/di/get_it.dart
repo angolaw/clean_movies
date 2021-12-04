@@ -3,6 +3,7 @@ import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
+import 'package:clean_movies/domain/usecases/delete_favorite_movie.dart';
 import 'package:clean_movies/domain/usecases/get_cast.dart';
 import 'package:clean_movies/domain/usecases/get_coming_soon.dart';
 import 'package:clean_movies/domain/usecases/get_favorite_movies.dart';
@@ -100,4 +101,6 @@ Future init() async {
       () => SaveMovie(repository: getItInstance()));
   getItInstance.registerLazySingleton<GetFavoriteMovies>(
       () => GetFavoriteMovies(repository: getItInstance()));
+  getItInstance.registerLazySingleton<DeleteFavoriteMovie>(
+      () => DeleteFavoriteMovie(repository: getItInstance()));
 }

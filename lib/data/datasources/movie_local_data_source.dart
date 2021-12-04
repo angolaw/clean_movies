@@ -10,15 +10,15 @@ abstract class MovieLocalDataSource {
 
 class MovieLocalDataSourceImpl extends MovieLocalDataSource {
   @override
-  Future<bool> checkIfMovieFavorite(int movieId) {
-    // TODO: implement checkIfMovieFavorite
-    throw UnimplementedError();
+  Future<bool> checkIfMovieFavorite(int movieId) async {
+    final movieBox = Hive.box('movieBox');
+    return movieBox.containsKey(movieId);
   }
 
   @override
-  Future<void> deleteMovie(int movieId) {
-    // TODO: implement deleteMovie
-    throw UnimplementedError();
+  Future<void> deleteMovie(int movieId) async {
+    final movieBox = Hive.box('movieBox');
+    return movieBox.delete(movieId);
   }
 
   @override

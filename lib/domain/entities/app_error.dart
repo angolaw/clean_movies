@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-enum AppErrorType { api, network }
+enum AppErrorType { api, network, database }
 
 class AppError extends Equatable {
   final AppErrorType errorType;

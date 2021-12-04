@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:clean_movies/domain/entities/cast_entity.dart';
 import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
@@ -11,7 +12,9 @@ import 'package:dartz/dartz.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
-  MovieRepositoryImpl(this.remoteDataSource);
+  final MovieLocalDataSource localDataSource;
+  MovieRepositoryImpl(
+      {required this.remoteDataSource, required this.localDataSource});
 
   @override
   Future<Either<AppError, List<MovieEntity?>>> getTrending() async {
@@ -108,5 +111,31 @@ class MovieRepositoryImpl implements MovieRepository {
     } on Exception {
       return const Left(AppError(AppErrorType.api));
     }
+  }
+
+  @override
+  Future<Either<AppError, bool>> checkIfMovieFavorite(int movieId) async {
+    try {} on SocketException {
+    } on Exception {
+      return Left(AppError(AppErrorType.database));
+    }
+  }
+
+  @override
+  Future<Either<AppError, void>> deleteFavoriteMovie(int movieId) {
+    // TODO: implement deleteFavoriteMovie
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AppError, List<MovieEntity>>> getFavoriteMovies() {
+    // TODO: implement getFavoriteMovies
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) {
+    // TODO: implement saveMovie
+    throw UnimplementedError();
   }
 }

@@ -39,7 +39,9 @@ dependencies:
   flutter_svg: ^0.23.0+1
   get_it: ^7.2.0
   google_fonts: ^2.1.0
+  hive: ^2.0.4
   http: ^0.13.4
+  path_provider: ^2.0.7
   wiredash: ^0.7.0+1
   youtube_player_flutter: ^8.0.0
 dev_dependencies:

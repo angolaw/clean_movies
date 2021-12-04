@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/data/tables/movie_table.dart';
 import 'package:clean_movies/domain/entities/cast_entity.dart';
 import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
@@ -144,5 +145,13 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) async {}
+  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) async {
+    try {
+      final response = await localDataSource
+          .saveMovie(MovieTable.fromMovieEntity(movieEntity));
+      return Right(response);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
+    }
+  }
 }

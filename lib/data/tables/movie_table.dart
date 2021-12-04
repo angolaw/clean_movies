@@ -20,4 +20,11 @@ class MovieTable extends MovieEntity {
             voteAverage: 0,
             releaseDate: '',
             overview: '');
+
+  factory MovieTable.fromMovieEntity(MovieEntity movieEntity) {
+    return MovieTable(
+        id: movieEntity.id,
+        title: movieEntity.title,
+        posterPath: movieEntity.posterPath);
+  }
 }

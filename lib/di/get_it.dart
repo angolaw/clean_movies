@@ -5,6 +5,7 @@ import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
 import 'package:clean_movies/domain/usecases/get_cast.dart';
 import 'package:clean_movies/domain/usecases/get_coming_soon.dart';
+import 'package:clean_movies/domain/usecases/get_favorite_movies.dart';
 import 'package:clean_movies/domain/usecases/get_movie_detail.dart';
 import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
@@ -97,4 +98,6 @@ Future init() async {
   //! LOCAL DATA USECASES
   getItInstance.registerLazySingleton<SaveMovie>(
       () => SaveMovie(repository: getItInstance()));
+  getItInstance.registerLazySingleton<GetFavoriteMovies>(
+      () => GetFavoriteMovies(repository: getItInstance()));
 }

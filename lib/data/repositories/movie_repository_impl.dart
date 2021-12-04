@@ -135,14 +135,14 @@ class MovieRepositoryImpl implements MovieRepository {
 
   @override
   Future<Either<AppError, List<MovieEntity>>> getFavoriteMovies() async {
-    try {} on Exception {
+    try {
+      final response = await localDataSource.getMovies();
+      return Right(response);
+    } on Exception {
       return const Left(AppError(AppErrorType.database));
     }
   }
 
   @override
-  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) {
-    // TODO: implement saveMovie
-    throw UnimplementedError();
-  }
+  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) async {}
 }

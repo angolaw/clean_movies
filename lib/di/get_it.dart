@@ -1,4 +1,5 @@
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
@@ -40,9 +41,14 @@ Future init() async {
       () => GetPlayingNow(getItInstance()));
   getItInstance.registerLazySingleton<GetComingSoon>(
       () => GetComingSoon(getItInstance()));
+  // movieLocalDataSource
+  getItInstance.registerLazySingleton<MovieLocalDataSource>(
+      () => MovieLocalDataSourceImpl());
+
   //movie repository
-  getItInstance.registerLazySingleton<MovieRepository>(
-      () => MovieRepositoryImpl(getItInstance()));
+  getItInstance.registerLazySingleton<MovieRepository>(() =>
+      MovieRepositoryImpl(
+          remoteDataSource: getItInstance(), localDataSource: getItInstance()));
   //registrando o bloc
   getItInstance.registerFactory(() => MoviebackdropBloc());
   //registrando o movieBackdropBloc

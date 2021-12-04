@@ -19,14 +19,14 @@ class DeleteFavoriteMovieEvent extends FavoriteEvent {
 }
 
 class ToggleFavoriteMovieEvent extends FavoriteEvent {
-  final int movieId;
+  final MovieEntity movieEntity;
   final bool isFavorite;
 
   const ToggleFavoriteMovieEvent(
-      {required this.movieId, required this.isFavorite});
+      {required this.movieEntity, required this.isFavorite});
 
   @override
-  List<Object> get props => [movieId, isFavorite];
+  List<Object> get props => [movieEntity, isFavorite];
 }
 
 class CheckIfMovieFavoriteEvent extends FavoriteEvent {

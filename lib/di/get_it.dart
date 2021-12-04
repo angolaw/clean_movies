@@ -16,6 +16,7 @@ import 'package:clean_movies/domain/usecases/get_videos.dart';
 import 'package:clean_movies/domain/usecases/save_movie.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
+import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
@@ -106,4 +107,12 @@ Future init() async {
       () => DeleteFavoriteMovie(repository: getItInstance()));
   getItInstance.registerLazySingleton<CheckIfFavoriteMovie>(
       () => CheckIfFavoriteMovie(repository: getItInstance()));
+
+  //* FAVORITE BLOC
+  getItInstance.registerFactory<FavoriteBloc>(() => FavoriteBloc(
+        saveMovie: getItInstance(),
+        checkIfMovieIsFavorite: getItInstance(),
+        deleteFavoriteMovie: getItInstance(),
+        getFavoriteMovies: getItInstance(),
+      ));
 }

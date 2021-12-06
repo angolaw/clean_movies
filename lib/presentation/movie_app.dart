@@ -1,4 +1,5 @@
 import 'package:clean_movies/common/constants/languages.dart';
+import 'package:clean_movies/common/fade_page_route_builder.dart';
 import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/common/routes.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';

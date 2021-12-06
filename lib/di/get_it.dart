@@ -1,7 +1,10 @@
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/datasources/language_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/data/repositories/app_repository_impl.dart';
 import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
+import 'package:clean_movies/domain/repositories/app_repository.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
 import 'package:clean_movies/domain/usecases/check_if_favorite_movie.dart';
 import 'package:clean_movies/domain/usecases/delete_favorite_movie.dart';
@@ -11,10 +14,12 @@ import 'package:clean_movies/domain/usecases/get_favorite_movies.dart';
 import 'package:clean_movies/domain/usecases/get_movie_detail.dart';
 import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
+import 'package:clean_movies/domain/usecases/get_preferred_language.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/domain/usecases/get_videos.dart';
 import 'package:clean_movies/domain/usecases/save_movie.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
+import 'package:clean_movies/domain/usecases/update_language.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
@@ -116,4 +121,13 @@ Future init() async {
         deleteFavoriteMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
       ));
+  //* LANGUAGE
+  getItInstance.registerLazySingleton<LanguageLocalDataSource>(
+      () => LanguageLocalDataSourceImpl());
+  getItInstance.registerLazySingleton<AppRepository>(
+      () => AppRepositoryImpl(languageLocalDataSource: getItInstance()));
+  getItInstance.registerLazySingleton<GetPreferredLanguage>(
+      () => GetPreferredLanguage(repository: getItInstance()));
+  getItInstance.registerLazySingleton<UpdateLanguage>(
+      () => UpdateLanguage(repository: getItInstance()));
 }

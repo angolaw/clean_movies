@@ -1,5 +1,6 @@
 import 'package:clean_movies/common/constants/languages.dart';
 import 'package:clean_movies/common/route_list.dart';
+import 'package:clean_movies/common/routes.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/domain/app_localizations.dart';
@@ -62,6 +63,14 @@ class _MovieAppState extends State<MovieApp> {
                 ],
                 builder: (context, child) {
                   return child!;
+                },
+                onGenerateRoute: (RouteSettings settings) {
+                  final routes = Routes.getRoutes(settings);
+                  WidgetBuilder builder = routes[settings.name]!;
+                  return FadePageRouteBuilder(
+                    builder: builder,
+                    settings: settings,
+                  );
                 },
                 initialRoute: RouteList.initial,
                 title: 'Movie App',

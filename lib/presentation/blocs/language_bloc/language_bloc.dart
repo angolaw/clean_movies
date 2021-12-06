@@ -24,7 +24,7 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
         await updateLanguage(event.language.code);
         emit(LanguageLoaded(locale: Locale(event.language.code)));
       } else if (event is LoadPreferredLanguageEvent) {
-        final Either<AppError, void> eitherResponse =
+        final Either<AppError, String> eitherResponse =
             await getPreferredLanguage(NoParams());
         eitherResponse.fold(
           (l) => emit(LanguageError()),

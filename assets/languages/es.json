@@ -14,7 +14,8 @@
   "noMovies": "Lo siento, no hay películas en esta sección.",
   "cast": "Reparto",
   "watchTrailers": "Ver trailers",
-  "noMoviesSearched": "No se encontraron películas, busque con otra palabra"
+  "noMoviesSearched": "No se encontraron películas, busque con otra palabra",
+  "noMoviesFound": "No se encontraron películas salvas como favoritas"
 
 
 }

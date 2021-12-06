@@ -3,6 +3,8 @@ import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 
+import 'login_form.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class LoginScreen extends StatelessWidget {
                 height: Sizes.dimen_12.h.toDouble(),
               ),
             ),
+            LoginForm(),
           ],
         )));
   }

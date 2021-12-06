@@ -17,12 +17,14 @@ class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
       : super(SearchMoviesInitial()) {
     on<SearchMoviesEvent>((event, emit) async {
       if (event is SearchMovieEvent) {
+        loadingBloc.add(StartLoading());
         final Either<AppError, List<MovieEntity?>> eitherResponse =
             await searchMovies(MovieSearchParams(searchTerm: event.searchTerm));
 
         eitherResponse.fold(
             (l) => emit(SearchMoviesError(errorType: l.errorType)),
             (r) => emit(SearchMoviesCompleted(movies: r)));
+        loadingBloc.add(FinishLoading());
       }
     });
   }

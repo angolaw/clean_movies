@@ -3,6 +3,8 @@ import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 
+import 'favorite_movie_card_widget.dart';
+
 class FavoriteMoviesGridView extends StatelessWidget {
   final List<MovieEntity> movies;
   const FavoriteMoviesGridView({Key? key, required this.movies})

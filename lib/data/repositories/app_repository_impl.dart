@@ -13,13 +13,17 @@ class AppRepositoryImpl extends AppRepository {
       final language = await languageLocalDataSource.getPreferredLanguage();
       return Right(language);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
   @override
-  Future<Either<AppError, void>> updateLanguage(String language) {
-    // TODO: implement updateLanguage
-    throw UnimplementedError();
+  Future<Either<AppError, void>> updateLanguage(String language) async {
+    try {
+      final response = await languageLocalDataSource.updateLanguage(language);
+      return Right(response);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
+    }
   }
 }

@@ -13,6 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
 import 'blocs/language_bloc/language_bloc.dart';
+import 'blocs/loading/loading_bloc.dart';
 import 'blocs/login/login_bloc.dart';
 import 'journeys/home/home_screen.dart';
 
@@ -26,6 +27,7 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   LanguageBloc? _languageBloc;
   LoginBloc? _loginBloc;
+  LoadingBloc? _loadingBloc;
 
   @override
   void initState() {
@@ -34,6 +36,7 @@ class _MovieAppState extends State<MovieApp> {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc?.add(LoadPreferredLanguageEvent());
     _loginBloc = getItInstance<LoginBloc>();
+    _loadingBloc = getItInstance<LoadingBloc>();
   }
 
   @override
@@ -41,6 +44,7 @@ class _MovieAppState extends State<MovieApp> {
     // TODO: implement dispose
     _languageBloc?.close();
     _loginBloc?.close();
+    _loadingBloc?.close();
     super.dispose();
   }
 
@@ -55,6 +59,9 @@ class _MovieAppState extends State<MovieApp> {
         ),
         BlocProvider<LoginBloc>.value(
           value: _loginBloc!,
+        ),
+        BlocProvider<LoadingBloc>.value(
+          value: _loadingBloc!,
         ),
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(

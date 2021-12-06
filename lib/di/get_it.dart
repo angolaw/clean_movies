@@ -72,7 +72,8 @@ Future init() async {
         getComingSoon: getItInstance(),
       ));
 
-  getItInstance.registerSingleton<LanguageBloc>(LanguageBloc());
+  getItInstance.registerSingleton<LanguageBloc>(LanguageBloc(
+      getPreferredLanguage: getItInstance(), updateLanguage: getItInstance()));
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(repository: getItInstance()));
 

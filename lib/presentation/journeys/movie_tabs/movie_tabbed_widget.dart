@@ -3,6 +3,7 @@ import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
+import 'package:clean_movies/presentation/journeys/loading/loading_circle.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_list_view_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/tab_title_widget.dart';
 import 'package:clean_movies/presentation/widgets/app_error_widget.dart';
@@ -65,6 +66,14 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                     MovieTabChangedEvent(currentTabIndex: currentTabIndex)),
               ),
             //movies pertaining to the current tab
+            if (state is MovieTabLoading)
+              Expanded(
+                child: Center(
+                  child: LoadingCircle(
+                    size: Sizes.dimen_100.w.toDouble(),
+                  ),
+                ),
+              ),
 
             if (state is MovieTabChanged)
               state.movies.isEmpty

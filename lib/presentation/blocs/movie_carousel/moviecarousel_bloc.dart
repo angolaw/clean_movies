@@ -12,8 +12,11 @@ part 'moviecarousel_state.dart';
 class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
   final GetTrending getTrending;
   final MoviebackdropBloc movieBackdropBloc;
+  final LoadingBloc loadingBloc;
   MoviecarouselBloc(
-      {required this.movieBackdropBloc, required this.getTrending})
+      {required this.movieBackdropBloc,
+      required this.getTrending,
+      required this.loadingBloc})
       : super(MoviecarouselInitial()) {
     on<MovieCarouselEvent>((event, emit) async {
       if (event is CarouselLoadEvent) {

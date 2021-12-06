@@ -6,6 +6,7 @@ import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/domain/app_localizations.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
+import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:clean_movies/presentation/journeys/favorite/favorite_screen.dart';
@@ -72,6 +73,12 @@ class NavigationDrawer extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop();
               _showDialog(context);
+            },
+          ),
+          NavigationListItem(
+            title: TranslationsConstants.logout.t(context),
+            onPressed: () {
+              BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
             },
           ),
         ],

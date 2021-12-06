@@ -87,7 +87,8 @@ Future init() async {
   getItInstance.registerFactory<MovieDetailBloc>(() => MovieDetailBloc(
       videosBloc: getItInstance(),
       getMovieDetail: getItInstance(),
-      castBloc: getItInstance()));
+      castBloc: getItInstance(),
+      favoriteBloc: getItInstance()));
 
   //! SEARCH FEATURE
 

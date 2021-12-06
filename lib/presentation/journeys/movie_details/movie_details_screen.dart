@@ -6,6 +6,7 @@ import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
+import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
@@ -29,10 +30,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   MovieDetailBloc? movieDetailBloc;
   CastBloc? _castBloc;
   VideosBloc? _videosBloc;
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     movieDetailBloc = getItInstance<MovieDetailBloc>();
     _castBloc = movieDetailBloc?.castBloc;
@@ -43,7 +42,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     movieDetailBloc?.close();
     _castBloc?.close();
     _videosBloc?.close();

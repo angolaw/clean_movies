@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/domain/usecases/login_request_params.dart';
 import 'package:clean_movies/domain/usecases/login_user.dart';
@@ -25,5 +26,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
   }
 
-  String getErrorMessage(AppErrorType errorType) {}
+  String getErrorMessage(AppErrorType errorType) {
+    switch (errorType) {
+      case AppErrorType.network:
+        return TranslationsConstants.noNetwork;
+      case AppErrorType.api:
+      case AppErrorType.database:
+        return TranslationsConstants.somethingWentWrong;
+      default:
+        return TranslationsConstants.wrongUsernamePassword;
+    }
+  }
 }

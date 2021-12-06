@@ -13,6 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
 import 'blocs/language_bloc/language_bloc.dart';
+import 'blocs/login/login_bloc.dart';
 import 'journeys/home/home_screen.dart';
 
 class MovieApp extends StatefulWidget {
@@ -24,6 +25,7 @@ class MovieApp extends StatefulWidget {
 
 class _MovieAppState extends State<MovieApp> {
   LanguageBloc? _languageBloc;
+  LoginBloc? _loginBloc;
 
   @override
   void initState() {
@@ -31,12 +33,14 @@ class _MovieAppState extends State<MovieApp> {
     super.initState();
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc?.add(LoadPreferredLanguageEvent());
+    _loginBloc = getItInstance<LoginBloc>();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     _languageBloc?.close();
+    _loginBloc?.close();
     super.dispose();
   }
 
@@ -44,8 +48,15 @@ class _MovieAppState extends State<MovieApp> {
   Widget build(BuildContext context) {
     ScreenUtil.init(width: 414, height: 896);
     final _navigatorKey = GlobalKey<NavigatorState>();
-    return BlocProvider<LanguageBloc>.value(
-      value: _languageBloc!,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LanguageBloc>.value(
+          value: _languageBloc!,
+        ),
+        BlocProvider<LoginBloc>.value(
+          value: _loginBloc!,
+        ),
+      ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
         builder: (context, state) {
           if (state is LanguageLoaded) {

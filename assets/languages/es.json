@@ -15,7 +15,9 @@
   "cast": "Reparto",
   "watchTrailers": "Ver trailers",
   "noMoviesSearched": "No se encontraron películas, busque con otra palabra",
-  "noMoviesFound": "No se encontraron películas salvas como favoritas"
+  "noMoviesFound": "No se encontraron películas salvas como favoritas",
+  "noNetwork" : "No hay conexión de red",
+  "wrongUsernamePassword": "Usuario o contraseña incorrectos"
 
 
 }

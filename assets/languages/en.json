@@ -15,7 +15,9 @@
   "cast": "Cast",
   "watchTrailers": "Watch Trailers",
   "noMoviesSearched": "No movies found, please search with another word",
-  "noFavoriteMovies": "No favorite movies found, please add some"
+  "noFavoriteMovies": "No favorite movies found, please add some",
+  "noNetwork": "No network connection",
+  "wrongUsernamePassword": "Wrong username or password"
 
 
 }

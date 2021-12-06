@@ -1,11 +1,15 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/domain/entities/movie_detail_entity.dart';
+import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieDetailAppBar extends StatelessWidget {
-  const MovieDetailAppBar({Key? key}) : super(key: key);
+  final MovieDetailEntity movieDetailEntity;
+  const MovieDetailAppBar({Key? key, required this.movieDetailEntity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +30,19 @@ class MovieDetailAppBar extends StatelessWidget {
         ),
         BlocBuilder<FavoriteBloc, FavoriteState>(builder: (context, state) {
           if (state is IsFavoriteMovie) {
-            return Icon(
-              state.isMovieFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Colors.white,
-              size: Sizes.dimen_12.h.toDouble(),
+            return GestureDetector(
+              onTap: () {
+                BlocProvider.of<FavoriteBloc>(context).add(
+                    ToggleFavoriteMovieEvent(
+                        movieEntity: MovieEntity.fromMovieDetailEntity(
+                            movieDetailEntity),
+                        isFavorite: state.isMovieFavorite));
+              },
+              child: Icon(
+                state.isMovieFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Colors.white,
+                size: Sizes.dimen_12.h.toDouble(),
+              ),
             );
           } else {
             return Icon(

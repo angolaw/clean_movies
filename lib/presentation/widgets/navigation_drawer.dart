@@ -45,7 +45,10 @@ class NavigationDrawer extends StatelessWidget {
           //1
           NavigationListItem(
             title: TranslationsConstants.favoriteMovies.t(context),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => FavoriteScreen()));
+            },
           ),
           NavigationExpandedListItem(
             title: TranslationsConstants.language.t(context),
@@ -59,7 +62,6 @@ class NavigationDrawer extends StatelessWidget {
           NavigationListItem(
             title: TranslationsConstants.feedback.t(context),
             onPressed: () {
-              print("ON");
               Navigator.of(context).pop();
               Wiredash.of(context)?.show();
             },

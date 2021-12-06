@@ -11,19 +11,19 @@ abstract class MovieLocalDataSource {
 class MovieLocalDataSourceImpl extends MovieLocalDataSource {
   @override
   Future<bool> checkIfMovieFavorite(int movieId) async {
-    final movieBox = Hive.box('movieBox');
+    final movieBox = await Hive.openBox('movieBox');
     return movieBox.containsKey(movieId);
   }
 
   @override
   Future<void> deleteMovie(int movieId) async {
-    final movieBox = Hive.box('movieBox');
+    final movieBox = await Hive.openBox('movieBox');
     return movieBox.delete(movieId);
   }
 
   @override
   Future<List<MovieTable>> getMovies() async {
-    final movieBox = Hive.box('movieBox');
+    final movieBox = await Hive.openBox('movieBox');
     final moviesIds = movieBox.keys;
     List<MovieTable> movies = List.empty(growable: true);
     for (var id in moviesIds) {
@@ -35,7 +35,7 @@ class MovieLocalDataSourceImpl extends MovieLocalDataSource {
   @override
   Future<void> saveMovie(MovieTable movieTable) async {
     //open movieBox on hive and save movieTable
-    final movieBox = Hive.box('movieBox');
+    final movieBox = await Hive.openBox('movieBox');
     await movieBox.put(movieTable.id, movieTable);
   }
 }

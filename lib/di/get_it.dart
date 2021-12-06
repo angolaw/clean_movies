@@ -71,8 +71,16 @@ Future init() async {
         getPlayingNow: getItInstance(),
         getComingSoon: getItInstance(),
       ));
-
-  getItInstance.registerSingleton<LanguageBloc>(LanguageBloc(
+  //* LANGUAGE
+  getItInstance.registerLazySingleton<LanguageLocalDataSource>(
+      () => LanguageLocalDataSourceImpl());
+  getItInstance.registerLazySingleton<AppRepository>(
+      () => AppRepositoryImpl(languageLocalDataSource: getItInstance()));
+  getItInstance.registerLazySingleton<GetPreferredLanguage>(
+      () => GetPreferredLanguage(repository: getItInstance()));
+  getItInstance.registerLazySingleton<UpdateLanguage>(
+      () => UpdateLanguage(repository: getItInstance()));
+  getItInstance.registerFactory<LanguageBloc>(() => LanguageBloc(
       getPreferredLanguage: getItInstance(), updateLanguage: getItInstance()));
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(repository: getItInstance()));
@@ -122,13 +130,4 @@ Future init() async {
         deleteFavoriteMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
       ));
-  //* LANGUAGE
-  getItInstance.registerLazySingleton<LanguageLocalDataSource>(
-      () => LanguageLocalDataSourceImpl());
-  getItInstance.registerLazySingleton<AppRepository>(
-      () => AppRepositoryImpl(languageLocalDataSource: getItInstance()));
-  getItInstance.registerLazySingleton<GetPreferredLanguage>(
-      () => GetPreferredLanguage(repository: getItInstance()));
-  getItInstance.registerLazySingleton<UpdateLanguage>(
-      () => UpdateLanguage(repository: getItInstance()));
 }

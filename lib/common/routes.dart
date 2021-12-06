@@ -10,14 +10,14 @@ import 'package:flutter/cupertino.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getRoutes(RouteSettings settings) => {
-        RouteList.initial: (context) => LoginScreen(),
-        RouteList.home: (context) => HomeScreen(),
+        RouteList.initial: (context) => const LoginScreen(),
+        RouteList.home: (context) => const HomeScreen(),
         RouteList.movieDetail: (context) => MovieDetailsScreen(
               movieDetailsArgument: settings.arguments as MovieDetailsArgument,
             ),
         RouteList.watchVideo: (context) => WatchVideoScreen(
               watchVideoArguments: settings.arguments as WatchVideosArguments,
             ),
-        RouteList.favorite: (context) => FavoriteScreen(),
+        RouteList.favorite: (context) => const FavoriteScreen(),
       };
 }

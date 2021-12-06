@@ -75,11 +75,18 @@ class NavigationDrawer extends StatelessWidget {
               _showDialog(context);
             },
           ),
-          NavigationListItem(
-            title: TranslationsConstants.logout.t(context),
-            onPressed: () {
-              BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+          BlocListener<LoginBloc, LoginState>(
+            listenWhen: (previous, current) => current is LogoutSuccess,
+            listener: (context, state) {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(RouteList.initial, (route) => false);
             },
+            child: NavigationListItem(
+              title: TranslationsConstants.logout.t(context),
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+              },
+            ),
           ),
         ],
       )),

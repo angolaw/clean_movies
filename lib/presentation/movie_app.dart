@@ -94,7 +94,6 @@ class _MovieAppState extends State<MovieApp> {
                   textTheme: ThemeText.getTextTheme(),
                   appBarTheme: const AppBarTheme(elevation: 0),
                 ),
-                home: HomeScreen(),
               ),
             );
           }

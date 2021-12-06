@@ -1,10 +1,14 @@
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/datasources/authentication_local_data_source.dart';
+import 'package:clean_movies/data/datasources/authentication_remote_data_source.dart';
 import 'package:clean_movies/data/datasources/language_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
 import 'package:clean_movies/data/repositories/app_repository_impl.dart';
+import 'package:clean_movies/data/repositories/authentication_repository_impl.dart';
 import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
 import 'package:clean_movies/domain/repositories/app_repository.dart';
+import 'package:clean_movies/domain/repositories/authentication_repository.dart';
 import 'package:clean_movies/domain/repositories/movie_repository.dart';
 import 'package:clean_movies/domain/usecases/check_if_favorite_movie.dart';
 import 'package:clean_movies/domain/usecases/delete_favorite_movie.dart';
@@ -17,12 +21,15 @@ import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_preferred_language.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/domain/usecases/get_videos.dart';
+import 'package:clean_movies/domain/usecases/login_user.dart';
+import 'package:clean_movies/domain/usecases/logout_user.dart';
 import 'package:clean_movies/domain/usecases/save_movie.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
 import 'package:clean_movies/domain/usecases/update_language.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
+import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
@@ -129,5 +136,23 @@ Future init() async {
         checkIfMovieIsFavorite: getItInstance(),
         deleteFavoriteMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
+      ));
+
+  //* LOGIN BLOC,REPO, DATASOURCES E USECASES
+  getItInstance.registerLazySingleton<AuthenticationLocalDataSource>(
+      () => AuthenticationLocalDataSourceImpl());
+  getItInstance.registerLazySingleton<AuthenticationRemoteDataSource>(
+      () => AuthenticationRemoteDataSourceImpl(client: getItInstance()));
+  getItInstance.registerLazySingleton<AuthenticationRepository>(() =>
+      AuthenticationRepositoryImpl(
+          authenticationLocalDataSource: getItInstance(),
+          authenticationRemoteDataSource: getItInstance()));
+  getItInstance.registerLazySingleton<LoginUser>(
+      () => LoginUser(repository: getItInstance()));
+  getItInstance.registerLazySingleton<LogoutUser>(
+      () => LogoutUser(repository: getItInstance()));
+  getItInstance.registerFactory<LoginBloc>(() => LoginBloc(
+        loginUser: getItInstance(),
+        logoutUser: getItInstance(),
       ));
 }

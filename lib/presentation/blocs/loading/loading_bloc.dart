@@ -7,7 +7,11 @@ part 'loading_state.dart';
 class LoadingBloc extends Bloc<LoadingEvent, LoadingState> {
   LoadingBloc() : super(LoadingInitial()) {
     on<LoadingEvent>((event, emit) {
-      // TODO: implement event handler
+      if (event is StartLoading) {
+        emit(LoadingStarted());
+      } else if (event is FinishLoading) {
+        emit(LoadingFinished());
+      }
     });
   }
 }

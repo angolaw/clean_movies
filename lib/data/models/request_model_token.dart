@@ -1,12 +1,8 @@
 class RequestTokenModel {
   final bool success;
-  final String requestToken;
-  final String expiresAt;
-
-  RequestTokenModel(
-      {required this.success,
-      required this.requestToken,
-      required this.expiresAt});
+  late final String? requestToken;
+  late final String? expiresAt;
+  RequestTokenModel({this.success = false, this.requestToken, this.expiresAt});
 
   factory RequestTokenModel.fromJson(Map<String, dynamic> json) {
     return RequestTokenModel(

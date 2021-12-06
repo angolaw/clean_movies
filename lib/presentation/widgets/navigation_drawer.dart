@@ -3,6 +3,7 @@ import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
+import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/domain/app_localizations.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
@@ -47,8 +48,7 @@ class NavigationDrawer extends StatelessWidget {
           NavigationListItem(
             title: TranslationsConstants.favoriteMovies.t(context),
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => FavoriteScreen()));
+              Navigator.of(context).pushNamed(RouteList.favorite);
             },
           ),
           NavigationExpandedListItem(

@@ -30,12 +30,15 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   MovieDetailBloc? movieDetailBloc;
   CastBloc? _castBloc;
   VideosBloc? _videosBloc;
+  FavoriteBloc? favoriteBloc;
+
   @override
   void initState() {
     super.initState();
     movieDetailBloc = getItInstance<MovieDetailBloc>();
     _castBloc = movieDetailBloc?.castBloc;
     _videosBloc = movieDetailBloc?.videosBloc;
+    favoriteBloc = movieDetailBloc?.favoriteBloc;
     movieDetailBloc?.add(
         MovieDetailLoadEvent(movieId: widget.movieDetailsArgument.movieId));
   }
@@ -58,6 +61,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           ),
           BlocProvider<CastBloc>.value(value: _castBloc!),
           BlocProvider<VideosBloc>.value(value: _videosBloc!),
+          BlocProvider<FavoriteBloc>.value(value: favoriteBloc!),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {

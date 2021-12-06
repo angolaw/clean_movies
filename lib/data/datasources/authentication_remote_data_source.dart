@@ -27,8 +27,9 @@ class AuthenticationRemoteDataSourceImpl
 
   @override
   Future<RequestTokenModel> validateWithLogin(
-      Map<String, dynamic> requestBody) {
-    // TODO: implement validateWithLogin
-    throw UnimplementedError();
+      Map<String, dynamic> requestBody) async {
+    final response = await client
+        .post('authentication/token/validate_with_login', params: requestBody);
+    return RequestTokenModel.fromJson(response);
   }
 }

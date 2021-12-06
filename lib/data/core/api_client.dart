@@ -25,6 +25,25 @@ class ApiClient {
     }
   }
 
+  dynamic post(String path, {Map<dynamic, dynamic>? params}) async {
+    final response = await _client.post(
+      Uri.parse(
+        getPath(path, null),
+      ),
+      body: json.encode(params),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else if (response.statusCode == 401) {
+      throw UnauthorizedException();
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
+
   String getPath(String path, Map<dynamic, dynamic>? params) {
     var paramsString = '';
 
@@ -36,3 +55,5 @@ class ApiClient {
     return '${ApiConstants.BASE_URL}$path?api_key=${ApiConstants.API_KEY}$paramsString';
   }
 }
+
+class UnauthorizedException implements Exception {}

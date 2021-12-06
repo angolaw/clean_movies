@@ -21,6 +21,7 @@ class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
       : super(MoviecarouselInitial()) {
     on<MovieCarouselEvent>((event, emit) async {
       if (event is CarouselLoadEvent) {
+        loadingBloc.add(StartLoading());
         final moviesEither = await getTrending(NoParams());
         moviesEither.fold(
             (l) => emit(MovieCarouselError(errorType: l.errorType)), (movies) {
@@ -28,6 +29,7 @@ class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
               MovieBackdropChangedEvent(movie: movies[event.defaultIndex]!));
           emit(MovieCarouselLoaded(
               movies: movies, defaultIndex: event.defaultIndex));
+          loadingBloc.add(FinishLoading());
         });
       }
     });

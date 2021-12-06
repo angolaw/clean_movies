@@ -1,6 +1,8 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
+import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieDetailAppBar extends StatelessWidget {
   const MovieDetailAppBar({Key? key}) : super(key: key);
@@ -22,13 +24,22 @@ class MovieDetailAppBar extends StatelessWidget {
             size: Sizes.dimen_12.h.toDouble(),
           ),
         ),
-
+        BlocBuilder<FavoriteBloc, FavoriteState>(builder: (context, state) {
+          if (state is IsFavoriteMovie) {
+            return Icon(
+              state.isMovieFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.white,
+              size: Sizes.dimen_12.h.toDouble(),
+            );
+          } else {
+            return Icon(
+              Icons.favorite_border,
+              color: Colors.white,
+              size: Sizes.dimen_12.h.toDouble(),
+            );
+          }
+        })
         //3
-        Icon(
-          Icons.favorite_border,
-          color: Colors.white,
-          size: Sizes.dimen_12.h.toDouble(),
-        ),
       ],
     );
   }

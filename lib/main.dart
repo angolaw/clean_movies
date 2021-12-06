@@ -3,6 +3,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:clean_movies/presentation/movie_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'data/tables/movie_table.dart';
 import 'di/get_it.dart' as getIt;
 import 'package:hive/hive.dart';
 
@@ -95,6 +96,7 @@ Future<void> main() async {
   //* HIVE init
   final appDocumentsDir =
       await path_provider.getApplicationDocumentsDirectory();
+  Hive.registerAdapter(MovieTableAdapter());
   Hive.init(appDocumentsDir.path);
 
   runApp(const MovieApp());

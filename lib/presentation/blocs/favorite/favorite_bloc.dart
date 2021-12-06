@@ -39,7 +39,8 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
           (r) => emit(IsFavoriteMovie(isMovieFavorite: r)),
         );
       } else if (event is LoadFavoriteEvent) {
-        _fetchLoadFavoriteMovies();
+        final responseState = await _fetchLoadFavoriteMovies().last;
+        emit(responseState);
       } else if (event is DeleteFavoriteMovieEvent) {
         await deleteFavoriteMovie(MovieParams(id: event.movieId));
         _fetchLoadFavoriteMovies();

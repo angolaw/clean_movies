@@ -2,6 +2,7 @@ import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
+import 'package:clean_movies/presentation/journeys/favorite/favorite_movies_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,8 +39,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       ),
       body: BlocProvider<FavoriteBloc>.value(
         value: favoriteBloc!,
-        child: BlocBuilder(builder: (context, state) {
+        child:
+            BlocBuilder<FavoriteBloc, FavoriteState>(builder: (context, state) {
           if (state is FavoriteMoviesLoaded) {
+            print(state.movies.length);
             if (state.movies.isEmpty) {
               return Center(
                 child: Text(
@@ -49,8 +52,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
               );
             }
-            return SizedBox.shrink();
+            return FavoriteMoviesGridView(movies: state.movies);
           } else {
+            print("Empty as always");
             return SizedBox.shrink();
           }
         }),

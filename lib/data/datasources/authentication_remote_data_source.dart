@@ -13,9 +13,12 @@ class AuthenticationRemoteDataSourceImpl
 
   AuthenticationRemoteDataSourceImpl({required this.client});
   @override
-  Future<String> createSession(Map<String, dynamic> requestBody) {
-    // TODO: implement createSession
-    throw UnimplementedError();
+  Future<String> createSession(Map<String, dynamic> requestBody) async {
+    final response = await client.post(
+      '/authentication/session/new',
+      params: requestBody,
+    );
+    return response['success'] ? response['session_id'] : null;
   }
 
   @override

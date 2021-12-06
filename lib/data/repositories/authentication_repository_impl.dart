@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:clean_movies/data/core/api_client.dart';
+import 'package:clean_movies/data/datasources/authentication_local_data_source.dart';
 import 'package:clean_movies/data/datasources/authentication_remote_data_source.dart';
 import 'package:clean_movies/data/models/request_model_token.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
@@ -9,8 +10,12 @@ import 'package:dartz/dartz.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
   final AuthenticationRemoteDataSource authenticationRemoteDataSource;
+  final AuthenticationLocalDataSource authenticationLocalDataSource;
 
-  AuthenticationRepositoryImpl({required this.authenticationRemoteDataSource});
+  AuthenticationRepositoryImpl({
+    required this.authenticationRemoteDataSource,
+    required this.authenticationLocalDataSource,
+  });
   @override
   Future<Either<AppError, bool>> loginUser(Map<String, dynamic> body) async {
     final requestTokenEitherResponse = await _getRequestToken();
@@ -25,7 +30,11 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
           await authenticationRemoteDataSource.validateWithLogin(body);
       final sessionId = await authenticationRemoteDataSource
           .createSession(validateWithLoginToken.toJson());
-      return const Right(true);
+      if (sessionId != null) {
+        await authenticationLocalDataSource.saveSessionId(sessionId);
+        return Right(true);
+      }
+      return Left(AppError(AppErrorType.sessionDenied));
     } on SocketException {
       return const Left(AppError(AppErrorType.network));
     } on UnauthorizedException {

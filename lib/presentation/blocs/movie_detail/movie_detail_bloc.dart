@@ -28,6 +28,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   }) : super(MovieDetailInitial()) {
     on<MovieDetailEvent>((event, emit) async {
       if (event is MovieDetailLoadEvent) {
+        loadingBloc.add(StartLoading());
         final Either<AppError, MovieDetailEntity?> eitherResponse =
             await getMovieDetail(MovieParams(id: event.movieId));
         eitherResponse.fold((l) => emit(MovieDetailError()),
@@ -35,6 +36,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
         castBloc.add(CastLoadEvent(movieId: event.movieId));
         videosBloc.add(LoadedVideosEvent(movieId: event.movieId));
         favoriteBloc.add(CheckIfMovieFavoriteEvent(movieId: event.movieId));
+        loadingBloc.add(FinishLoading());
       }
     });
   }

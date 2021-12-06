@@ -46,7 +46,7 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
 
   @override
   Future<Either<AppError, void>> logoutUser() async {
-    final sessionId = authenticationLocalDataSource.getSessionId();
+    final sessionId = await authenticationLocalDataSource.getSessionId();
     await Future.wait([
       authenticationRemoteDataSource.deleteSession(sessionId),
       authenticationLocalDataSource.deleteSessionId(),

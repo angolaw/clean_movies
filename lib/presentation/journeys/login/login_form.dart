@@ -104,7 +104,6 @@ class _LoginFormState extends State<LoginForm> {
             Button(
               onPressed: enableSignIn
                   ? () {
-                      print("true");
                       BlocProvider.of<LoginBloc>(context).add(
                           LoginInitiateEvent(
                               username: _userNameController!.text,

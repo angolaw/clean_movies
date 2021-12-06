@@ -38,14 +38,21 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       ),
       body: BlocProvider<FavoriteBloc>.value(
         value: favoriteBloc!,
-        child: BlocBuilder(builder: (context, state){
-          if(state is FavoriteMoviesLoaded){
-            if(state.movies.isEmpty){
-              return Center(child: Text(TranslationsConstants.noFavoriteMovies.t(context),),)
+        child: BlocBuilder(builder: (context, state) {
+          if (state is FavoriteMoviesLoaded) {
+            if (state.movies.isEmpty) {
+              return Center(
+                child: Text(
+                  TranslationsConstants.noFavoriteMovies.t(context),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+              );
             }
-          }else{
-
-           }
+            return SizedBox.shrink();
+          } else {
+            return SizedBox.shrink();
+          }
         }),
       ),
     );

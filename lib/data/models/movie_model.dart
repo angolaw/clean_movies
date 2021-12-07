@@ -64,22 +64,22 @@ class MovieModel extends MovieEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['popularity'] = this.popularity;
-    data['vote_count'] = this.voteCount;
-    data['video'] = this.video;
-    data['poster_path'] = this.posterPath;
-    data['id'] = this.id;
-    data['adult'] = this.adult;
-    data['backdrop_path'] = this.backdropPath;
-    data['original_language'] = this.originalLanguage;
-    data['original_title'] = this.originalTitle;
-    data['genre_ids'] = this.genreIds;
-    data['title'] = this.title;
-    data['vote_average'] = this.voteAverage;
-    data['overview'] = this.overview;
-    data['release_date'] = this.releaseDate;
-    data['media_type'] = this.mediaType;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['popularity'] = popularity;
+    data['vote_count'] = voteCount;
+    data['video'] = video;
+    data['poster_path'] = posterPath;
+    data['id'] = id;
+    data['adult'] = adult;
+    data['backdrop_path'] = backdropPath;
+    data['original_language'] = originalLanguage;
+    data['original_title'] = originalTitle;
+    data['genre_ids'] = genreIds;
+    data['title'] = title;
+    data['vote_average'] = voteAverage;
+    data['overview'] = overview;
+    data['release_date'] = releaseDate;
+    data['media_type'] = mediaType;
     return data;
   }
 }

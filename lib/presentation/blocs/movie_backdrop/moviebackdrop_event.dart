@@ -10,7 +10,7 @@ abstract class MoviebackdropEvent extends Equatable {
 class MovieBackdropChangedEvent extends MoviebackdropEvent {
   final MovieEntity movie;
 
-  MovieBackdropChangedEvent({required this.movie});
+  const MovieBackdropChangedEvent({required this.movie});
   @override
   List<Object> get props => [movie];
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: annotate_overrides, overridden_fields
+
 import 'package:clean_movies/domain/entities/cast_entity.dart';
 
 class CastCrewResultModel {
@@ -68,7 +70,7 @@ class CastModel extends CastEntity {
   final int? order;
   final String profilePath;
 
-  CastModel({
+  const CastModel({
     this.castId,
     required this.character,
     required this.creditId,
@@ -98,7 +100,7 @@ class CastModel extends CastEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['cast_id'] = castId;
     data['character'] = character;
     data['credit_id'] = creditId;
@@ -140,7 +142,7 @@ class Crew {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['credit_id'] = creditId;
     data['department'] = department;
     data['gender'] = gender;

@@ -11,7 +11,7 @@ class MoviebackdropInitial extends MoviebackdropState {}
 
 class MoviebackdropChanged extends MoviebackdropState {
   final MovieEntity movie;
-  MoviebackdropChanged({required this.movie});
+  const MoviebackdropChanged({required this.movie});
 
   @override
   List<Object> get props => [movie];

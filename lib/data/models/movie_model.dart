@@ -1,3 +1,5 @@
+// ignore_for_file: annotate_overrides, overridden_fields
+
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 
 class MovieModel extends MovieEntity {

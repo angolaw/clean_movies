@@ -15,7 +15,6 @@ import 'package:wiredash/wiredash.dart';
 import 'blocs/language_bloc/language_bloc.dart';
 import 'blocs/loading/loading_bloc.dart';
 import 'blocs/login/login_bloc.dart';
-import 'journeys/home/home_screen.dart';
 
 class MovieApp extends StatefulWidget {
   const MovieApp({Key? key}) : super(key: key);
@@ -31,7 +30,6 @@ class _MovieAppState extends State<MovieApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc?.add(LoadPreferredLanguageEvent());
@@ -41,7 +39,6 @@ class _MovieAppState extends State<MovieApp> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _languageBloc?.close();
     _loginBloc?.close();
     _loadingBloc?.close();
@@ -112,7 +109,7 @@ class _MovieAppState extends State<MovieApp> {
 }
 
 class WiredashApp extends StatelessWidget {
-  final navigatorKey;
+  final GlobalKey<NavigatorState> navigatorKey;
   final Widget child;
   final String languageCode;
 

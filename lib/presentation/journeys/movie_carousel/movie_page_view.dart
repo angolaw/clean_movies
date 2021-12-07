@@ -23,7 +23,6 @@ class _MoviePageViewState extends State<MoviePageView> {
   late PageController _pageController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController(
         initialPage: widget.defaultIndex,
@@ -33,7 +32,6 @@ class _MoviePageViewState extends State<MoviePageView> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pageController.dispose();
     super.dispose();
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: void_checks
+
 import 'dart:io';
 
 import 'package:clean_movies/data/core/api_client.dart';
@@ -51,7 +53,7 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
       authenticationRemoteDataSource.deleteSession(sessionId),
       authenticationLocalDataSource.deleteSessionId(),
     ]);
-    print(await authenticationLocalDataSource.getSessionId());
+
     return const Right(Unit);
   }
 

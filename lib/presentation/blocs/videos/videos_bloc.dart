@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:clean_movies/domain/entities/app_error.dart';
-import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/movie_params.dart';
 import 'package:clean_movies/domain/entities/video_entity.dart';
 import 'package:clean_movies/domain/usecases/get_videos.dart';

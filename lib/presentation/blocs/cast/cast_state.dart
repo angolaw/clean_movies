@@ -14,7 +14,7 @@ class CastError extends CastState {}
 class CastLoaded extends CastState {
   final List<CastEntity?> cast;
 
-  CastLoaded({required this.cast});
+  const CastLoaded({required this.cast});
 
   @override
   List<Object> get props => [cast];

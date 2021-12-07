@@ -23,7 +23,6 @@ class _LoginFormState extends State<LoginForm> {
   bool enableSignIn = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _userNameController = TextEditingController();
     _passwordController = TextEditingController();
@@ -44,7 +43,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _passwordController?.dispose();
     _userNameController?.dispose();
 
@@ -93,7 +91,7 @@ class _LoginFormState extends State<LoginForm> {
                     style: Theme.of(context).textTheme.orangeSubtitle1,
                   );
                 }
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               },
               listenWhen: (previous, current) => current is LoginSuccess,
               listener: (context, state) {

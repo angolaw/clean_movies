@@ -1,3 +1,5 @@
+// ignore_for_file: annotate_overrides, overridden_fields
+
 import 'package:clean_movies/domain/entities/video_entity.dart';
 
 class VideoModel extends VideoEntity {
@@ -10,7 +12,7 @@ class VideoModel extends VideoEntity {
   final int size;
   final String type;
 
-  VideoModel({
+  const VideoModel({
     required this.id,
     required this.iso6391,
     required this.iso31661,

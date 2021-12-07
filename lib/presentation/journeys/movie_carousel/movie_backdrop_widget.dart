@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieBackdropWidget extends StatelessWidget {
+  const MovieBackdropWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //9

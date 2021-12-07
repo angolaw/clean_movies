@@ -1,3 +1,5 @@
+// ignore_for_file: library_prefixes
+
 import 'dart:async';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:clean_movies/presentation/movie_app.dart';

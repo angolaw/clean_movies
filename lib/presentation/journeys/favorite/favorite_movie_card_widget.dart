@@ -6,7 +6,6 @@ import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
-import 'package:clean_movies/presentation/journeys/movie_details/movie_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

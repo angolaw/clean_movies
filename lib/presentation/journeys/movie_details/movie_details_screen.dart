@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/constants/translation_constants.dart';
@@ -87,7 +89,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         child: Text(TranslationsConstants.cast.t(context),
                             style: Theme.of(context).textTheme.headline6),
                       ),
-                      CastWidget(),
+                      const CastWidget(),
                       VideosWidget(videosBloc: _videosBloc!)
                     ]),
               );

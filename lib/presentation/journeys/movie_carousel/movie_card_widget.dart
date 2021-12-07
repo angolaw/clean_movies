@@ -4,7 +4,6 @@ import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
-import 'package:clean_movies/presentation/journeys/movie_details/movie_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class MovieCardWidget extends StatelessWidget {

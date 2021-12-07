@@ -1,9 +1,4 @@
-import 'package:clean_movies/common/constants/size_constants.dart';
-import 'package:clean_movies/common/constants/translation_constants.dart';
-import 'package:clean_movies/common/extensions/size_extension.dart';
-import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/di/get_it.dart';
-import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
@@ -11,11 +6,9 @@ import 'package:clean_movies/presentation/blocs/search_movies/search_movies_bloc
 import 'package:clean_movies/presentation/journeys/movie_carousel/movie_carousel_widget.dart';
 import 'package:clean_movies/presentation/journeys/movie_tabs/movie_tabbed_widget.dart';
 import 'package:clean_movies/presentation/widgets/app_error_widget.dart';
-import 'package:clean_movies/presentation/widgets/button.dart';
 import 'package:clean_movies/presentation/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wiredash/wiredash.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -32,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     movieCarouselBloc = getItInstance<MoviecarouselBloc>();
     moviebackdropBloc = movieCarouselBloc?.movieBackdropBloc;
@@ -43,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     movieCarouselBloc?.close();
     moviebackdropBloc?.close();
@@ -96,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   errorType: state.errorType,
                 );
               }
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             },
           ),
         ));

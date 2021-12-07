@@ -25,14 +25,12 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   int currentTabIndex = 0;
   @override
   void initState() {
-    // TODO: implement initState
     movieTabbedBloc.add(MovieTabChangedEvent(currentTabIndex: currentTabIndex));
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 

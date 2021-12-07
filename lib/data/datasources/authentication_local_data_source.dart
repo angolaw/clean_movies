@@ -22,7 +22,6 @@ class AuthenticationLocalDataSourceImpl extends AuthenticationLocalDataSource {
   @override
   Future<String> getSessionId() async {
     final authenticationBox = await Hive.openBox('authenticationBox');
-    print(await authenticationBox.get('session_id'));
     return await authenticationBox.get('session_id') ?? '';
   }
 }

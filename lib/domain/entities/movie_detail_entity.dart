@@ -19,6 +19,5 @@ class MovieDetailEntity extends Equatable {
       required this.backdropPath});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id];
 }

@@ -1,6 +1,3 @@
-import 'package:clean_movies/common/constants/size_constants.dart';
-import 'package:clean_movies/common/extensions/size_extension.dart';
-import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation_sublist_item.dart';

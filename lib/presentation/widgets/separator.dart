@@ -4,6 +4,8 @@ import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:flutter/cupertino.dart';
 
 class Separator extends StatelessWidget {
+  const Separator({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //1

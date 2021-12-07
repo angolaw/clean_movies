@@ -1,7 +1,6 @@
 import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
-import 'package:clean_movies/presentation/journeys/watch_video/watch_video_screen.dart';
 import 'package:clean_movies/presentation/journeys/watch_video/watch_videos_arguments.dart';
 import 'package:clean_movies/presentation/widgets/button.dart';
 import 'package:flutter/material.dart';

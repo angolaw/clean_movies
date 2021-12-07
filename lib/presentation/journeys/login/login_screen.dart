@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
                 height: Sizes.dimen_12.h.toDouble(),
               ),
             ),
-            LoginForm(),
+            const LoginForm(),
           ],
         )));
   }

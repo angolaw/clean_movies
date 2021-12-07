@@ -7,6 +7,5 @@ class AppError extends Equatable {
   const AppError(this.errorType);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [errorType];
 }

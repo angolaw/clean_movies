@@ -1,3 +1,5 @@
+// ignore_for_file: annotate_overrides
+
 import 'package:flutter/material.dart';
 
 class FadePageRouteBuilder<T> extends PageRouteBuilder<T> {

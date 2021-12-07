@@ -54,7 +54,6 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<MovieDetailModel> getMovieDetail(int id) async {
     final response = await _client.get('movie/$id');
     final movie = MovieDetailModel.fromJson(response);
-    print(movie);
     return movie;
   }
 

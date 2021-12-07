@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/screenutil/screen_util.dart';

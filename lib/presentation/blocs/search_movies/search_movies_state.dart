@@ -12,7 +12,7 @@ class SearchMoviesInitial extends SearchMoviesState {}
 class SearchMoviesError extends SearchMoviesState {
   final AppErrorType errorType;
 
-  SearchMoviesError({required this.errorType});
+  const SearchMoviesError({required this.errorType});
 
   @override
   List<Object> get props => [errorType];
@@ -21,7 +21,7 @@ class SearchMoviesError extends SearchMoviesState {
 class SearchMoviesCompleted extends SearchMoviesState {
   final List<MovieEntity?> movies;
 
-  SearchMoviesCompleted({required this.movies});
+  const SearchMoviesCompleted({required this.movies});
 
   @override
   List<Object> get props => [movies];

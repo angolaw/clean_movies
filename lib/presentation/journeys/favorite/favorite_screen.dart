@@ -18,7 +18,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     favoriteBloc = getItInstance<FavoriteBloc>();
     favoriteBloc?.add(LoadFavoriteEvent());
@@ -26,7 +25,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     favoriteBloc?.close();
   }
@@ -42,7 +40,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         child:
             BlocBuilder<FavoriteBloc, FavoriteState>(builder: (context, state) {
           if (state is FavoriteMoviesLoaded) {
-            print(state.movies.length);
             if (state.movies.isEmpty) {
               return Center(
                 child: Text(
@@ -54,8 +51,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             }
             return FavoriteMoviesGridView(movies: state.movies);
           } else {
-            print("Empty as always");
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }
         }),
       ),

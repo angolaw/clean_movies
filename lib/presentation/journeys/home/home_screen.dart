@@ -1,5 +1,6 @@
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
+import 'package:clean_movies/presentation/blocs/movie_backdrop_cubit/movie_backdrop_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/blocs/search_movies/search_movies_bloc.dart';
@@ -19,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   MoviecarouselBloc? movieCarouselBloc;
-  MoviebackdropBloc? moviebackdropBloc;
+  MovieBackdropCubit? moviebackdropCubit;
   MovieTabBloc? movieTabBloc;
   SearchMoviesBloc? searchMoviesBloc;
 
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     movieCarouselBloc = getItInstance<MoviecarouselBloc>();
-    moviebackdropBloc = movieCarouselBloc?.movieBackdropBloc;
+    moviebackdropCubit = movieCarouselBloc?.movieBackdropCubit;
     movieCarouselBloc?.add(CarouselLoadEvent(defaultIndex: 0));
     movieTabBloc = getItInstance<MovieTabBloc>();
     searchMoviesBloc = getItInstance<SearchMoviesBloc>();
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     super.dispose();
     movieCarouselBloc?.close();
-    moviebackdropBloc?.close();
+    moviebackdropCubit?.close();
     movieTabBloc?.close();
     searchMoviesBloc?.close();
   }
@@ -49,8 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocProvider<MoviecarouselBloc>(
             create: (_) => movieCarouselBloc!,
           ),
-          BlocProvider<MoviebackdropBloc>(
-            create: (_) => moviebackdropBloc!,
+          BlocProvider<MovieBackdropCubit>(
+            create: (_) => moviebackdropCubit!,
           ),
           BlocProvider<MovieTabBloc>(
             create: (_) => movieTabBloc!,

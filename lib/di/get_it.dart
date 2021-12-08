@@ -70,13 +70,12 @@ Future init() async {
       MovieRepositoryImpl(
           remoteDataSource: getItInstance(), localDataSource: getItInstance()));
   //registrando o bloc
-  getItInstance.registerFactory(() => MoviebackdropBloc());
   //registrando o movieBackdropBloc
 
   getItInstance.registerFactory(() => MoviecarouselBloc(
       loadingCubit: getItInstance(),
       getTrending: getItInstance(),
-      movieBackdropBloc: getItInstance()));
+      movieBackdropCubit: getItInstance()));
   //registrando o MovieTabBloc
   getItInstance.registerFactory(() => MovieTabBloc(
         getPopular: getItInstance(),
@@ -114,7 +113,7 @@ Future init() async {
       videosBloc: getItInstance(),
       getMovieDetail: getItInstance(),
       castBloc: getItInstance(),
-      loadingBloc: getItInstance(),
+      loadingCubit: getItInstance(),
       favoriteBloc: getItInstance()));
 
   //! SEARCH FEATURE
@@ -124,7 +123,7 @@ Future init() async {
   getItInstance.registerLazySingleton<SearchMovies>(
       () => SearchMovies(repository: getItInstance()));
   getItInstance.registerFactory<SearchMoviesBloc>(() => SearchMoviesBloc(
-      searchMovies: getItInstance(), loadingBloc: getItInstance()));
+      searchMovies: getItInstance(), loadingCubit: getItInstance()));
 
   //! LOCAL DATA USECASES
   getItInstance.registerLazySingleton<SaveMovie>(

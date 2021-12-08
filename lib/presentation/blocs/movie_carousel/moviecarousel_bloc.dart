@@ -6,6 +6,7 @@ import 'package:clean_movies/domain/usecases/no_params.dart';
 import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
+import 'package:clean_movies/presentation/blocs/movie_backdrop_cubit/movie_backdrop_cubit.dart';
 import 'package:equatable/equatable.dart';
 
 part 'moviecarousel_event.dart';
@@ -13,11 +14,11 @@ part 'moviecarousel_state.dart';
 
 class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
   final GetTrending getTrending;
-  final MoviebackdropBloc movieBackdropBloc;
+  final MovieBackdropCubit movieBackdropCubit;
   final LoadingCubit loadingCubit;
   // final LoadingBloc loadingBloc;
   MoviecarouselBloc(
-      {required this.movieBackdropBloc,
+      {required this.movieBackdropCubit,
       required this.getTrending,
       required this.loadingCubit})
       : super(MoviecarouselInitial()) {
@@ -28,8 +29,7 @@ class MoviecarouselBloc extends Bloc<MovieCarouselEvent, MoviecarouselState> {
         final moviesEither = await getTrending(NoParams());
         moviesEither.fold(
             (l) => emit(MovieCarouselError(errorType: l.errorType)), (movies) {
-          movieBackdropBloc.add(
-              MovieBackdropChangedEvent(movie: movies[event.defaultIndex]!));
+          movieBackdropCubit.backdropChanged(movies[event.defaultIndex]!);
           emit(MovieCarouselLoaded(
               movies: movies, defaultIndex: event.defaultIndex));
           // loadingBloc.add(FinishLoading());

@@ -33,6 +33,7 @@ import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
 import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
+import 'package:clean_movies/presentation/blocs/movie_backdrop_cubit/movie_backdrop_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
@@ -161,7 +162,8 @@ Future init() async {
         logoutUser: getItInstance(),
       ));
   //* LOADING BLOC
-  getItInstance.registerFactory<LoadingBloc>(() => LoadingBloc());
   //* LOADING CUBIT
   getItInstance.registerFactory<LoadingCubit>(() => LoadingCubit());
+  //! movieBackdropCubit
+  getItInstance.registerFactory<MovieBackdropCubit>(() => MovieBackdropCubit());
 }

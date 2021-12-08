@@ -18,12 +18,14 @@ class LanguageCubit extends Cubit<Locale> {
       : super(Locale(Languages.languages[0].code));
 
   void toggleLanguage(LanguageEntity language) async {
+    print("Called: changing to ${language.code}");
     await updateLanguage(language.code);
     loadPreferredLanguage();
   }
 
   void loadPreferredLanguage() async {
     final response = await getPreferredLanguage(NoParams());
+    print(response);
     emit(response.fold(
         (l) => Locale(Languages.languages[0].code), (r) => Locale(r)));
   }

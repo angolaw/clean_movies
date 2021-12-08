@@ -14,8 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
-import 'blocs/language_bloc/language_bloc.dart';
-import 'blocs/loading/loading_bloc.dart';
 import 'blocs/login/login_bloc.dart';
 
 class MovieApp extends StatefulWidget {
@@ -26,22 +24,22 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
-  LanguageBloc? _languageBloc;
+  LanguageCubit? _languageCubit;
   LoginBloc? _loginBloc;
   LoadingCubit? _loadingCubit;
 
   @override
   void initState() {
     super.initState();
-    _languageBloc = getItInstance<LanguageBloc>();
-    _languageBloc?.add(LoadPreferredLanguageEvent());
+    _languageCubit = getItInstance<LanguageCubit>();
+    _languageCubit?.loadPreferredLanguage();
     _loginBloc = getItInstance<LoginBloc>();
     _loadingCubit = getItInstance<LoadingCubit>();
   }
 
   @override
   void dispose() {
-    _languageBloc?.close();
+    _languageCubit?.close();
     _loginBloc?.close();
     _loadingCubit?.close();
     super.dispose();
@@ -53,8 +51,8 @@ class _MovieAppState extends State<MovieApp> {
     final _navigatorKey = GlobalKey<NavigatorState>();
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LanguageBloc>.value(
-          value: _languageBloc!,
+        BlocProvider<LanguageCubit>.value(
+          value: _languageCubit!,
         ),
         BlocProvider<LoginBloc>.value(
           value: _loginBloc!,

@@ -4,6 +4,7 @@ import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/common/route_list.dart';
+import 'package:clean_movies/presentation/blocs/language/language_cubit.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
@@ -53,10 +54,7 @@ class NavigationDrawer extends StatelessWidget {
             title: TranslationsConstants.language.t(context),
             //1
             children: Languages.languages.map((e) => e.value).toList(),
-            onPressed: (index) {
-              BlocProvider.of<LanguageBloc>(context).add(
-                  ToggleLanguageEvent(language: Languages.languages[index]));
-            },
+            onPressed: (index) => _onLanguageSelected(index, context),
           ),
           NavigationListItem(
             title: TranslationsConstants.feedback.t(context),
@@ -104,5 +102,10 @@ class NavigationDrawer extends StatelessWidget {
             ),
           );
         });
+  }
+
+  _onLanguageSelected(int index, BuildContext context) {
+    BlocProvider.of<LanguageCubit>(context)
+        .toggleLanguage(Languages.languages[index]);
   }
 }

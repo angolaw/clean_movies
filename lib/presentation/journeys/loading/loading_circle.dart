@@ -11,6 +11,8 @@ class LoadingCircle extends StatelessWidget {
     return SizedBox(
         width: size,
         height: size,
-        child: const RiveAnimation.asset('assets/animations/load.riv'));
+        child: const RiveAnimation.asset(
+          'assets/animations/load.riv',
+        ));
   }
 }

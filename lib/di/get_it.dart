@@ -28,6 +28,7 @@ import 'package:clean_movies/domain/usecases/search_movies.dart';
 import 'package:clean_movies/domain/usecases/update_language.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
+import 'package:clean_movies/presentation/blocs/language/language_cubit.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
@@ -91,7 +92,7 @@ Future init() async {
       () => GetPreferredLanguage(repository: getItInstance()));
   getItInstance.registerLazySingleton<UpdateLanguage>(
       () => UpdateLanguage(repository: getItInstance()));
-  getItInstance.registerFactory<LanguageBloc>(() => LanguageBloc(
+  getItInstance.registerFactory<LanguageCubit>(() => LanguageCubit(
       getPreferredLanguage: getItInstance(), updateLanguage: getItInstance()));
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(repository: getItInstance()));

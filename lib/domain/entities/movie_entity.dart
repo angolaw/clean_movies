@@ -38,4 +38,6 @@ class MovieEntity extends Equatable {
       overview: entity.overview!,
     );
   }
+
+  static MovieEntity? empty() {}
 }

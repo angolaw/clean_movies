@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 abstract class AuthenticationLocalDataSource {
   Future<void> saveSessionId(String sessionId);
   Future<void> deleteSessionId();
-  Future<String> getSessionId();
+  Future<String?> getSessionId();
 }
 
 class AuthenticationLocalDataSourceImpl extends AuthenticationLocalDataSource {
@@ -20,8 +20,8 @@ class AuthenticationLocalDataSourceImpl extends AuthenticationLocalDataSource {
   }
 
   @override
-  Future<String> getSessionId() async {
+  Future<String?> getSessionId() async {
     final authenticationBox = await Hive.openBox('authenticationBox');
-    return await authenticationBox.get('session_id') ?? '';
+    return await authenticationBox.get('session_id');
   }
 }

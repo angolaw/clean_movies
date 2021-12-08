@@ -30,6 +30,7 @@ import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
+import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
 import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
@@ -72,7 +73,7 @@ Future init() async {
   //registrando o movieBackdropBloc
 
   getItInstance.registerFactory(() => MoviecarouselBloc(
-      loadingBloc: getItInstance(),
+      loadingCubit: getItInstance(),
       getTrending: getItInstance(),
       movieBackdropBloc: getItInstance()));
   //registrando o MovieTabBloc
@@ -161,4 +162,6 @@ Future init() async {
       ));
   //* LOADING BLOC
   getItInstance.registerFactory<LoadingBloc>(() => LoadingBloc());
+  //* LOADING CUBIT
+  getItInstance.registerFactory<LoadingCubit>(() => LoadingCubit());
 }

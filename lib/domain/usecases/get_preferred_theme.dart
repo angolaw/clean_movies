@@ -10,8 +10,7 @@ class GetPreferredTheme extends UseCase<String, NoParams> {
 
   GetPreferredTheme({required this.repository});
   @override
-  Future<Either<AppError, String>> call(NoParams params) {
-    // TODO: implement call
-    throw UnimplementedError();
+  Future<Either<AppError, String>> call(NoParams params) async {
+    return await repository.getPreferredTheme();
   }
 }

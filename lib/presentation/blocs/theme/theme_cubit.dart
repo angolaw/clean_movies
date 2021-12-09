@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:clean_movies/domain/usecases/get_preferred_theme.dart';
 import 'package:clean_movies/domain/usecases/no_params.dart';
+import 'package:clean_movies/domain/usecases/update_preferred_theme.dart';
 import 'package:equatable/equatable.dart';
 
 part 'theme_state.dart';
@@ -10,12 +11,12 @@ enum Themes {
   dark,
 }
 
-class ThemeCubit extends Cubit<ThemeState> {
+class ThemeCubit extends Cubit<Themes> {
   final GetPreferredTheme getPreferredTheme;
   final UpdatePreferredTheme updatePreferredTheme;
   ThemeCubit(
       {required this.getPreferredTheme, required this.updatePreferredTheme})
-      : super(ThemeInitial());
+      : super(Themes.dark);
 
   Future<void> toggleTheme() async {
     await updatePreferredTheme(state == Themes.dark ? 'light' : 'dark');

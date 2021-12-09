@@ -25,7 +25,7 @@ class TabTitleWidget extends StatelessWidget {
           border: Border(
             bottom: BorderSide(
               color: isSelected ? AppColor.royalBlue : Colors.transparent,
-              width: Sizes.dimen_1.h.toDouble(),
+              width: Sizes.dimen_1.h,
             ),
           ),
         ),

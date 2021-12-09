@@ -22,7 +22,7 @@ class MovieBackdropWidget extends StatelessWidget {
       //8
       child: ClipRRect(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(Sizes.dimen_40.w.toDouble()),
+          bottom: Radius.circular(Sizes.dimen_40.w),
         ),
         //4
         child: Stack(

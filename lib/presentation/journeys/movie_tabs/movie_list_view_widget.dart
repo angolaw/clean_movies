@@ -12,7 +12,7 @@ class MovieListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 6.h.toDouble()),
+      padding: EdgeInsets.symmetric(vertical: 6.h),
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
@@ -25,7 +25,7 @@ class MovieListViewBuilder extends StatelessWidget {
           },
           separatorBuilder: (context, index) {
             return SizedBox(
-              width: 14.w.toDouble(),
+              width: 14.w,
             );
           },
           itemCount: movies.length),

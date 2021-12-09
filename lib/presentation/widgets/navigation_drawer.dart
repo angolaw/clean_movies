@@ -24,7 +24,7 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Sizes.dimen_300.w.toDouble(),
+      width: Sizes.dimen_300.w,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -37,12 +37,12 @@ class NavigationDrawer extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(
-                top: Sizes.dimen_8.h.toDouble(),
-                left: Sizes.dimen_8.w.toDouble(),
-                right: Sizes.dimen_8.h.toDouble(),
-                bottom: Sizes.dimen_8.h.toDouble()),
+                top: Sizes.dimen_8.h,
+                left: Sizes.dimen_8.w,
+                right: Sizes.dimen_8.h,
+                bottom: Sizes.dimen_8.h),
             child: Logo(
-              height: Sizes.dimen_20.h.toDouble(),
+              height: Sizes.dimen_20.h,
             ),
           ),
           //1
@@ -99,7 +99,7 @@ class NavigationDrawer extends StatelessWidget {
                   color: context.read<ThemeCubit>().state == Themes.dark
                       ? Colors.white
                       : AppColor.vulcan,
-                  size: Sizes.dimen_40.w.toDouble(),
+                  size: Sizes.dimen_40.w,
                 ),
               ),
             );
@@ -119,7 +119,7 @@ class NavigationDrawer extends StatelessWidget {
             buttonText: TranslationsConstants.okay,
             image: Image.asset(
               'assets/pngs/tmdb_logo.png',
-              height: Sizes.dimen_32.h.toDouble(),
+              height: Sizes.dimen_32.h,
             ),
           );
         });

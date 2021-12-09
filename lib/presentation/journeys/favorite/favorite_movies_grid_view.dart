@@ -13,14 +13,14 @@ class FavoriteMoviesGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_8.w.toDouble()),
+      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_8.w),
       child: GridView.builder(
         shrinkWrap: true,
         itemCount: movies.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.7,
-          crossAxisSpacing: Sizes.dimen_16.w.toDouble(),
+          crossAxisSpacing: Sizes.dimen_16.w,
         ),
         itemBuilder: (context, index) {
           final movie = movies[index];

@@ -17,7 +17,7 @@ class MovieCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 32,
-      borderRadius: BorderRadius.circular(Sizes.dimen_16.w.toDouble()),
+      borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
       child: GestureDetector(
           onTap: () {
             //* DEPOIS
@@ -25,7 +25,7 @@ class MovieCardWidget extends StatelessWidget {
                 arguments: MovieDetailsArgument(movieId: movieId));
           },
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(Sizes.dimen_16.w.toDouble()),
+            borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
             child: CachedNetworkImage(
               imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
               fit: BoxFit.cover,

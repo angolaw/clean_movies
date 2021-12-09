@@ -24,7 +24,7 @@ class NavigationSubListItem extends StatelessWidget {
         ),
         child: ListTile(
           //1
-          contentPadding: EdgeInsets.symmetric(horizontal: 32.w.toDouble()),
+          contentPadding: EdgeInsets.symmetric(horizontal: 32.w),
           title: Text(
             title,
             style: Theme.of(context).textTheme.subtitle1,

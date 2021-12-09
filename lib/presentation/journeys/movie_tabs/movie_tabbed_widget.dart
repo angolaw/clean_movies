@@ -38,7 +38,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
   Widget build(BuildContext context) {
     return BlocBuilder<MovieTabBloc, MovieTabState>(builder: (context, state) {
       return Padding(
-        padding: EdgeInsets.only(top: Sizes.dimen_4.h.toDouble()),
+        padding: EdgeInsets.only(top: Sizes.dimen_4.h),
         child: Column(
           children: [
             Row(
@@ -68,7 +68,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
               Expanded(
                 child: Center(
                   child: LoadingCircle(
-                    size: Sizes.dimen_100.w.toDouble(),
+                    size: Sizes.dimen_100.w,
                   ),
                 ),
               ),

@@ -78,15 +78,15 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       BigPoster(movie: state.movieDetailEntity),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: Sizes.dimen_16.w.toDouble(),
-                          vertical: Sizes.dimen_8.h.toDouble(),
+                          horizontal: Sizes.dimen_16.w,
+                          vertical: Sizes.dimen_8.h,
                         ),
                         child: Text(state.movieDetailEntity.overview!,
                             style: Theme.of(context).textTheme.bodyText2),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: Sizes.dimen_16.w.toDouble(),
+                          horizontal: Sizes.dimen_16.w,
                         ),
                         child: Text(TranslationsConstants.cast.t(context),
                             style: Theme.of(context).textTheme.headline6),
@@ -115,7 +115,7 @@ class CastWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is CastLoaded) {
           return Container(
-            height: Sizes.dimen_100.h.toDouble(),
+            height: Sizes.dimen_100.h,
             child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -123,19 +123,19 @@ class CastWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final castEntity = state.cast[index];
                   return Container(
-                    height: Sizes.dimen_100.h.toDouble(),
-                    width: Sizes.dimen_160.w.toDouble(),
+                    height: Sizes.dimen_100.h,
+                    width: Sizes.dimen_160.w,
                     //2
                     child: Card(
                       elevation: 1,
                       margin: EdgeInsets.symmetric(
-                        horizontal: Sizes.dimen_8.w.toDouble(),
-                        vertical: Sizes.dimen_4.h.toDouble(),
+                        horizontal: Sizes.dimen_8.w,
+                        vertical: Sizes.dimen_4.h,
                       ),
                       //3
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(Sizes.dimen_8.w.toDouble()),
+                          Radius.circular(Sizes.dimen_8.w),
                         ),
                       ),
                       //4
@@ -147,12 +147,12 @@ class CastWidget extends StatelessWidget {
                             //7
                             child: ClipRRect(
                               borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(8.w.toDouble()),
+                                top: Radius.circular(8.w),
                               ),
                               //5
                               child: CachedNetworkImage(
-                                height: Sizes.dimen_100.h.toDouble(),
-                                width: Sizes.dimen_160.w.toDouble(),
+                                height: Sizes.dimen_100.h,
+                                width: Sizes.dimen_160.w,
                                 imageUrl:
                                     '${ApiConstants.BASE_IMAGE_URL}${castEntity!.posterPath}',
                                 fit: BoxFit.fitWidth,
@@ -163,7 +163,7 @@ class CastWidget extends StatelessWidget {
                           //2
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: Sizes.dimen_8.w.toDouble(),
+                              horizontal: Sizes.dimen_8.w,
                             ),
                             //1
                             child: Text(
@@ -179,9 +179,9 @@ class CastWidget extends StatelessWidget {
                           //4
                           Padding(
                             padding: EdgeInsets.only(
-                              left: Sizes.dimen_8.w.toDouble(),
-                              right: Sizes.dimen_8.w.toDouble(),
-                              bottom: Sizes.dimen_2.h.toDouble(),
+                              left: Sizes.dimen_8.w,
+                              right: Sizes.dimen_8.w,
+                              bottom: Sizes.dimen_2.h,
                             ),
                             //3
                             child: Text(

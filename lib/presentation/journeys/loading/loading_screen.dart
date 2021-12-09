@@ -24,9 +24,7 @@ class LoadingScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColor.vulcan.withOpacity(0.8),
                   ),
-                  child: Center(
-                      child:
-                          LoadingCircle(size: Sizes.dimen_200.w.toDouble()))),
+                  child: Center(child: LoadingCircle(size: Sizes.dimen_200.w))),
           ],
         );
       },

@@ -29,20 +29,20 @@ class SearchMovieCard extends StatelessWidget {
       //4
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: Sizes.dimen_16.w.toDouble(),
-          vertical: Sizes.dimen_2.h.toDouble(),
+          horizontal: Sizes.dimen_16.w,
+          vertical: Sizes.dimen_2.h,
         ),
         //5
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.all(Sizes.dimen_8.w.toDouble()),
+              padding: EdgeInsets.all(Sizes.dimen_8.w),
               //6
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(Sizes.dimen_4.w.toDouble()),
+                borderRadius: BorderRadius.circular(Sizes.dimen_4.w),
                 child: CachedNetworkImage(
                   imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
-                  width: Sizes.dimen_80.w.toDouble(),
+                  width: Sizes.dimen_80.w,
                 ),
               ),
             ),

@@ -16,9 +16,9 @@ class LoginScreen extends StatelessWidget {
             child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: Sizes.dimen_32.h.toDouble()),
+              padding: EdgeInsets.only(top: Sizes.dimen_32.h),
               child: Logo(
-                height: Sizes.dimen_12.h.toDouble(),
+                height: Sizes.dimen_12.h,
               ),
             ),
             const LoginForm(),

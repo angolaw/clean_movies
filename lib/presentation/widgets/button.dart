@@ -33,15 +33,15 @@ class Button extends StatelessWidget {
         ),
         //3
         borderRadius: BorderRadius.all(
-          Radius.circular(Sizes.dimen_20.w.toDouble()),
+          Radius.circular(Sizes.dimen_20.w),
         ),
       ),
       //4
-      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_16.w.toDouble()),
+      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_16.w),
       //5
-      margin: EdgeInsets.symmetric(vertical: Sizes.dimen_10.h.toDouble()),
+      margin: EdgeInsets.symmetric(vertical: Sizes.dimen_10.h),
       //6
-      height: Sizes.dimen_16.h.toDouble(),
+      height: Sizes.dimen_16.h,
 
       child: TextButton(
         onPressed: onPressed,

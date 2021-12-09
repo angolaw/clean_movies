@@ -15,6 +15,6 @@ class Logo extends StatelessWidget {
         color: context.read<ThemeCubit>().state == Themes.dark
             ? Colors.white
             : AppColor.vulcan,
-        height: height.h.toDouble());
+        height: height.h);
   }
 }

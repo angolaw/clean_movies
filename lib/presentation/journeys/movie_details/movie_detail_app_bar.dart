@@ -25,7 +25,7 @@ class MovieDetailAppBar extends StatelessWidget {
           child: Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
-            size: Sizes.dimen_12.h.toDouble(),
+            size: Sizes.dimen_12.h,
           ),
         ),
         BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
@@ -39,14 +39,14 @@ class MovieDetailAppBar extends StatelessWidget {
               child: Icon(
                 state.isMovieFavorite ? Icons.favorite : Icons.favorite_border,
                 color: Colors.white,
-                size: Sizes.dimen_12.h.toDouble(),
+                size: Sizes.dimen_12.h,
               ),
             );
           } else {
             return Icon(
               Icons.favorite_border,
               color: Colors.white,
-              size: Sizes.dimen_12.h.toDouble(),
+              size: Sizes.dimen_12.h,
             );
           }
         })

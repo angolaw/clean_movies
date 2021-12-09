@@ -19,9 +19,9 @@ class FavoriteMovieCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: Sizes.dimen_8.h.toDouble()),
+      margin: EdgeInsets.only(bottom: Sizes.dimen_8.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Sizes.dimen_8.w.toDouble()),
+        borderRadius: BorderRadius.circular(Sizes.dimen_8.w),
       ),
       //7
       child: GestureDetector(
@@ -34,7 +34,7 @@ class FavoriteMovieCardWidget extends StatelessWidget {
         },
         //6
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(Sizes.dimen_8.w.toDouble()),
+          borderRadius: BorderRadius.circular(Sizes.dimen_8.w),
           //3
           child: Stack(
             children: <Widget>[
@@ -42,7 +42,7 @@ class FavoriteMovieCardWidget extends StatelessWidget {
               CachedNetworkImage(
                 imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
                 fit: BoxFit.cover,
-                width: Sizes.dimen_100.h.toDouble(),
+                width: Sizes.dimen_100.h,
               ),
               //5
               Align(
@@ -54,10 +54,10 @@ class FavoriteMovieCardWidget extends StatelessWidget {
                         .deleteFavoriteMovie(MovieParams(id: movie.id));
                   },
                   child: Padding(
-                    padding: EdgeInsets.all(Sizes.dimen_12.w.toDouble()),
+                    padding: EdgeInsets.all(Sizes.dimen_12.w),
                     child: Icon(
                       Icons.delete,
-                      size: Sizes.dimen_12.h.toDouble(),
+                      size: Sizes.dimen_12.h,
                       color: Colors.white,
                     ),
                   ),

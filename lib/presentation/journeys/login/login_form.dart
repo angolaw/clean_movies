@@ -54,15 +54,15 @@ class _LoginFormState extends State<LoginForm> {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: Sizes.dimen_32.w.toDouble(),
-          vertical: Sizes.dimen_24.h.toDouble(),
+          horizontal: Sizes.dimen_32.w,
+          vertical: Sizes.dimen_24.h,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             //5
             Padding(
-              padding: EdgeInsets.only(bottom: Sizes.dimen_8.h.toDouble()),
+              padding: EdgeInsets.only(bottom: Sizes.dimen_8.h),
               child: Text(
                 TranslationsConstants.loginToMovieApp.t(context),
                 textAlign: TextAlign.center,

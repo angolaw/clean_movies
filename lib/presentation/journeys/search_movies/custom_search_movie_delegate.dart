@@ -48,7 +48,7 @@ class CustomSearchDelegate extends SearchDelegate {
       child: Icon(
         Icons.arrow_back_ios,
         color: Colors.white,
-        size: Sizes.dimen_12.h.toDouble(),
+        size: Sizes.dimen_12.h,
       ),
     );
   }
@@ -81,7 +81,7 @@ class CustomSearchDelegate extends SearchDelegate {
             return Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: Sizes.dimen_64.w.toDouble(),
+                  horizontal: Sizes.dimen_64.w,
                 ),
                 child: Text(
                   TranslationsConstants.noMoviesSearched.t(context),

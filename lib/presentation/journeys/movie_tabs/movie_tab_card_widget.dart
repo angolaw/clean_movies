@@ -32,7 +32,7 @@ class MovieTabCardWidget extends StatelessWidget {
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.dimen_10.w.toDouble()),
+              borderRadius: BorderRadius.circular(Sizes.dimen_10.w),
               child: CachedNetworkImage(
                 imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
                 fit: BoxFit.cover,
@@ -40,7 +40,7 @@ class MovieTabCardWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: Sizes.dimen_4.h.toDouble()),
+            padding: EdgeInsets.only(top: Sizes.dimen_4.h),
             child: Text(
               title.intelliTrim(),
               style: Theme.of(context).textTheme.bodyText2,

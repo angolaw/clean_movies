@@ -35,7 +35,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
               height: Curves.easeIn.transform(value) *
                   ScreenUtil.screenHeight *
                   0.35,
-              width: Sizes.dimen_230.w.toDouble(),
+              width: Sizes.dimen_230.w,
               child: child,
             ),
           );
@@ -47,7 +47,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
                   Curves.easeIn.transform(index == 0 ? value : value * 0.5) *
                       ScreenUtil.screenHeight *
                       0.35,
-              width: Sizes.dimen_230.w.toDouble(),
+              width: Sizes.dimen_230.w,
               child: child,
             ),
           );

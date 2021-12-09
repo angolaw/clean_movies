@@ -79,9 +79,9 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                     children: [
                       for (int i = 0; i < _videos.length; i++)
                         Container(
-                          height: Sizes.dimen_60.h.toDouble(),
-                          padding: EdgeInsets.symmetric(
-                              vertical: Sizes.dimen_8.h.toDouble()),
+                          height: Sizes.dimen_60.h,
+                          padding:
+                              EdgeInsets.symmetric(vertical: Sizes.dimen_8.h),
                           child: Row(
                             children: <Widget>[
                               GestureDetector(
@@ -90,7 +90,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                                   _controller?.play();
                                 },
                                 child: CachedNetworkImage(
-                                  width: Sizes.dimen_200.w.toDouble(),
+                                  width: Sizes.dimen_200.w,
                                   imageUrl: YoutubePlayer.getThumbnail(
                                     videoId: _videos[i]!.key,
                                     quality: ThumbnailQuality.high,
@@ -100,7 +100,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: Sizes.dimen_8.w.toDouble()),
+                                      horizontal: Sizes.dimen_8.w),
                                   child: Text(
                                     _videos[i]!.title,
                                     style:

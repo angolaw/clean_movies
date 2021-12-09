@@ -24,17 +24,17 @@ class AppDialog extends StatelessWidget {
     return Dialog(
       backgroundColor: AppColor.vulcan,
       elevation: Sizes.dimen_32,
-      insetPadding: EdgeInsets.all(Sizes.dimen_32.w.toDouble()),
+      insetPadding: EdgeInsets.all(Sizes.dimen_32.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(Sizes.dimen_8.w.toDouble()),
+          Radius.circular(Sizes.dimen_8.w),
         ),
       ),
       child: Container(
         padding: EdgeInsets.only(
-          top: Sizes.dimen_4.h.toDouble(),
-          left: Sizes.dimen_16.w.toDouble(),
-          right: Sizes.dimen_16.w.toDouble(),
+          top: Sizes.dimen_4.h,
+          left: Sizes.dimen_16.w,
+          right: Sizes.dimen_16.w,
         ),
         decoration: const BoxDecoration(
           boxShadow: [
@@ -52,8 +52,7 @@ class AppDialog extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
             Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: Sizes.dimen_6.h.toDouble()),
+              padding: EdgeInsets.symmetric(vertical: Sizes.dimen_6.h),
               child: Text(
                 description.t(context),
                 textAlign: TextAlign.center,

@@ -18,7 +18,7 @@ class AppErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_32.w.toDouble()),
+      padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_32.w),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,

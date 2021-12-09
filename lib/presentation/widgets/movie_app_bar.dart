@@ -17,8 +17,8 @@ class MovieAppBar extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(
           top: ScreenUtil.statusBarHeight + Sizes.dimen_4.h,
-          left: Sizes.dimen_16.w.toDouble(),
-          right: Sizes.dimen_16.w.toDouble(),
+          left: Sizes.dimen_16.w,
+          right: Sizes.dimen_16.w,
         ),
         child: Row(
           children: [
@@ -28,7 +28,7 @@ class MovieAppBar extends StatelessWidget {
               },
               icon: SvgPicture.asset(
                 'assets/svgs/menu.svg',
-                height: Sizes.dimen_12.h.toDouble(),
+                height: Sizes.dimen_12.h,
               ),
             ),
             const Expanded(
@@ -47,7 +47,7 @@ class MovieAppBar extends StatelessWidget {
               icon: Icon(
                 Icons.search,
                 color: Colors.white,
-                size: Sizes.dimen_12.h.toDouble(),
+                size: Sizes.dimen_12.h,
               ),
             ),
           ],

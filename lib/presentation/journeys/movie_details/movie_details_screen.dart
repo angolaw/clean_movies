@@ -9,6 +9,7 @@ import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
+import 'package:clean_movies/presentation/blocs/favorite_cubit/favorite_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';
 import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
@@ -33,7 +34,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   MovieDetailBloc? movieDetailBloc;
   CastBloc? _castBloc;
   VideosBloc? _videosBloc;
-  FavoriteBloc? favoriteBloc;
+  FavoriteCubit? favoriteCubit;
 
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     movieDetailBloc = getItInstance<MovieDetailBloc>();
     _castBloc = movieDetailBloc?.castBloc;
     _videosBloc = movieDetailBloc?.videosBloc;
-    favoriteBloc = movieDetailBloc?.favoriteBloc;
+    favoriteCubit = movieDetailBloc?.favoriteCubit;
     movieDetailBloc?.add(
         MovieDetailLoadEvent(movieId: widget.movieDetailsArgument.movieId));
   }
@@ -64,7 +65,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           ),
           BlocProvider<CastBloc>.value(value: _castBloc!),
           BlocProvider<VideosBloc>.value(value: _videosBloc!),
-          BlocProvider<FavoriteBloc>.value(value: favoriteBloc!),
+          BlocProvider<FavoriteCubit>.value(value: favoriteCubit!),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {

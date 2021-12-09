@@ -31,6 +31,7 @@ import 'package:clean_movies/domain/usecases/update_language.dart';
 import 'package:clean_movies/domain/usecases/update_preferred_theme.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
+import 'package:clean_movies/presentation/blocs/favorite_cubit/favorite_cubit.dart';
 import 'package:clean_movies/presentation/blocs/language/language_cubit.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
@@ -122,7 +123,7 @@ Future init() async {
       getMovieDetail: getItInstance(),
       castBloc: getItInstance(),
       loadingCubit: getItInstance(),
-      favoriteBloc: getItInstance()));
+      favoriteCubit: getItInstance()));
 
   //! SEARCH FEATURE
 
@@ -144,9 +145,16 @@ Future init() async {
       () => CheckIfFavoriteMovie(repository: getItInstance()));
 
   //* FAVORITE BLOC
-  getItInstance.registerFactory<FavoriteBloc>(() => FavoriteBloc(
+  // getItInstance.registerFactory<FavoriteBloc>(() => FavoriteBloc(
+  //       saveMovie: getItInstance(),
+  //       checkIfMovieIsFavorite: getItInstance(),
+  //       deleteFavoriteMovie: getItInstance(),
+  //       getFavoriteMovies: getItInstance(),
+  //     ));
+  //* FAVORITE CUBIT
+  getItInstance.registerFactory<FavoriteCubit>(() => FavoriteCubit(
         saveMovie: getItInstance(),
-        checkIfMovieIsFavorite: getItInstance(),
+        checkIfFavoriteMovie: getItInstance(),
         deleteFavoriteMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
       ));

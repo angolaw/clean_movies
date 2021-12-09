@@ -29,6 +29,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       } else if (event is LogoutEvent) {
         await logoutUser(NoParams());
         emit(LogoutSuccess());
+      } else if (event is GuestLoginEvent) {
+        emit(LoginSuccess());
       }
     });
   }

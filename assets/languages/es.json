@@ -25,7 +25,8 @@
     "noNetwork": "No hay conexion de red",
     "sessionDenied": "Sesión denegada",
     "enterTMDbUsername": "Ingrese el nombre de usuario de TMDb aquí ...",
-    "enterPassword": "Ingrese la contraseña aquí..."
+    "enterPassword": "Ingrese la contraseña aquí...",
+    "guestSignIn": "Iniciar sesión como invitado"
 
 
 }

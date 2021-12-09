@@ -112,7 +112,8 @@ class _LoginFormState extends State<LoginForm> {
               isEnabled: enableSignIn,
             ),
             Button(
-              onPressed: () => BlocProvider.of<LoginBloc>(context).add(),
+              onPressed: () =>
+                  BlocProvider.of<LoginBloc>(context).add(GuestLoginEvent()),
               text: TranslationsConstants.signIn,
               isEnabled: enableSignIn,
             )

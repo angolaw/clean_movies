@@ -112,10 +112,22 @@ class _MovieAppState extends State<MovieApp> {
                         ? ThemeText.getTextTheme()
                         : ThemeText.getLightTextTheme(),
                     appBarTheme: const AppBarTheme(elevation: 0),
+                    inputDecorationTheme: InputDecorationTheme(
+                      hintStyle: Theme.of(context).textTheme.greySubtitle1,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: theme == Themes.dark
+                              ? Colors.white
+                              : AppColor.vulcan,
+                        ),
+                      ),
+                      enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                    ),
                     colorScheme: ColorScheme.fromSwatch().copyWith(
-                        secondary: theme == Themes.dark
-                            ? AppColor.vulcan
-                            : Colors.white),
+                      secondary:
+                          theme == Themes.dark ? AppColor.vulcan : Colors.white,
+                    ),
                   ),
                 ),
               );

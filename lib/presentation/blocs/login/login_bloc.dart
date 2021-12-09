@@ -14,6 +14,7 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginUser loginUser;
   final LogoutUser logoutUser;
+
   LoginBloc({required this.loginUser, required this.logoutUser})
       : super(LoginInitial()) {
     on<LoginEvent>((event, emit) async {
@@ -21,7 +22,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final Either<AppError, bool> eitherResponse = await loginUser(
             LoginRequestParams(
                 userName: event.username, password: event.password));
-
         eitherResponse.fold((error) {
           var message = getErrorMessage(error.errorType);
           emit(LoginError(message: message));

@@ -53,7 +53,7 @@ class MovieModel extends MovieEntity {
       posterPath: json['poster_path'],
       id: json['id'],
       adult: json['adult'],
-      backdropPath: json['backdrop_path'],
+      backdropPath: json['backdrop_path'] ?? '',
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],
       genreIds: json['genre_ids'].cast<int>(),

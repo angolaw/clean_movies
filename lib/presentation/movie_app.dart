@@ -107,7 +107,9 @@ class _MovieAppState extends State<MovieApp> {
                         ? Brightness.dark
                         : Brightness.light,
                     visualDensity: VisualDensity.adaptivePlatformDensity,
-                    textTheme: ThemeText.getTextTheme(),
+                    textTheme: theme == Themes.dark
+                        ? ThemeText.getTextTheme()
+                        : ThemeText.getLightTextTheme(),
                     appBarTheme: const AppBarTheme(elevation: 0),
                   ),
                 ),

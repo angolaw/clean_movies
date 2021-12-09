@@ -7,8 +7,10 @@ import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/presentation/blocs/language/language_cubit.dart';
 import 'package:clean_movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:clean_movies/presentation/blocs/login/login_bloc.dart';
+import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:clean_movies/presentation/journeys/drawer/navigation_list_item.dart';
+import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:clean_movies/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,6 +85,25 @@ class NavigationDrawer extends StatelessWidget {
               },
             ),
           ),
+          BlocBuilder<ThemeCubit, Themes>(builder: (context, theme) {
+            return Align(
+              alignment: Alignment.center,
+              child: IconButton(
+                //2
+                onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+                icon: Icon(
+                  //3
+                  theme == Themes.dark
+                      ? Icons.brightness_4_sharp
+                      : Icons.brightness_7_sharp,
+                  color: context.read<ThemeCubit>().state == Themes.dark
+                      ? Colors.white
+                      : AppColor.vulcan,
+                  size: Sizes.dimen_40.w.toDouble(),
+                ),
+              ),
+            );
+          })
         ],
       )),
     );

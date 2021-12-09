@@ -25,6 +25,8 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
   LanguageCubit? _languageCubit;
   LoginBloc? _loginBloc;
   LoadingCubit? _loadingCubit;
@@ -52,7 +54,6 @@ class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(width: 414, height: 896);
-    final _navigatorKey = GlobalKey<NavigatorState>();
     return MultiBlocProvider(
       providers: [
         BlocProvider<LanguageCubit>.value(
@@ -70,6 +71,7 @@ class _MovieAppState extends State<MovieApp> {
       ],
       child: BlocBuilder<ThemeCubit, Themes>(
         builder: (context, theme) {
+          print(theme);
           return BlocBuilder<LanguageCubit, Locale>(
             builder: (context, locale) {
               return WiredashApp(
@@ -104,9 +106,10 @@ class _MovieAppState extends State<MovieApp> {
                         theme == Themes.dark ? AppColor.vulcan : Colors.white,
                     scaffoldBackgroundColor:
                         theme == Themes.dark ? AppColor.vulcan : Colors.white,
-                    brightness: theme == Themes.dark
-                        ? Brightness.dark
-                        : Brightness.light,
+                    cardTheme: CardTheme(
+                      color:
+                          theme == Themes.dark ? Colors.white : AppColor.vulcan,
+                    ),
                     visualDensity: VisualDensity.adaptivePlatformDensity,
                     textTheme: theme == Themes.dark
                         ? ThemeText.getTextTheme()

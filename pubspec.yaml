@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc_test: ^9.0.1
   build_runner: ^2.1.5
   cached_network_image: ^3.1.0+1
   cupertino_icons: ^1.0.2
@@ -34,15 +35,17 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.3
+  flutter_bloc: ^8.0.0
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^0.23.0+1
+  flutter_test_ui: ^2.0.0
   get_it: ^7.2.0
   google_fonts: ^2.1.0
   hive: ^2.0.4
   hive_generator: ^1.1.1
   http: ^0.13.4
+  mockito: ^5.0.16
   path_provider: ^2.0.7
   rive: ^0.7.33
   wiredash: ^0.7.0+1

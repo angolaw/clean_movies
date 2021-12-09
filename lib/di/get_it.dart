@@ -144,13 +144,6 @@ Future init() async {
   getItInstance.registerLazySingleton<CheckIfFavoriteMovie>(
       () => CheckIfFavoriteMovie(repository: getItInstance()));
 
-  //* FAVORITE BLOC
-  // getItInstance.registerFactory<FavoriteBloc>(() => FavoriteBloc(
-  //       saveMovie: getItInstance(),
-  //       checkIfMovieIsFavorite: getItInstance(),
-  //       deleteFavoriteMovie: getItInstance(),
-  //       getFavoriteMovies: getItInstance(),
-  //     ));
   //* FAVORITE CUBIT
   getItInstance.registerFactory<FavoriteCubit>(() => FavoriteCubit(
         saveMovie: getItInstance(),

@@ -1,8 +1,10 @@
+import 'package:clean_movies/common/constants/size_constants.dart';
 import 'package:clean_movies/common/constants/translation_constants.dart';
 import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/favorite_cubit/favorite_cubit.dart';
 import 'package:clean_movies/presentation/journeys/favorite/favorite_movies_grid_view.dart';
+import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,6 +34,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColor.vulcan,
         title: Text(TranslationsConstants.favoriteMovies.t(context)),
       ),
       body: BlocProvider<FavoriteCubit>.value(
@@ -48,7 +51,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
               );
             }
-            return FavoriteMoviesGridView(movies: state.movies);
+            return Padding(
+              padding: const EdgeInsets.only(top: Sizes.dimen_8),
+              child: FavoriteMoviesGridView(movies: state.movies),
+            );
           } else {
             return const SizedBox.shrink();
           }

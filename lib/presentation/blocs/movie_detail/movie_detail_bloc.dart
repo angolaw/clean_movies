@@ -19,7 +19,6 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final GetMovieDetail getMovieDetail;
   final CastBloc castBloc;
   final VideosBloc videosBloc;
-  //final FavoriteBloc favoriteBloc;
   final FavoriteCubit favoriteCubit;
   final LoadingCubit loadingCubit;
   MovieDetailBloc({

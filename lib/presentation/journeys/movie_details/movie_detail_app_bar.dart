@@ -32,11 +32,6 @@ class MovieDetailAppBar extends StatelessWidget {
           if (state is IsFavoriteMovie) {
             return GestureDetector(
               onTap: () {
-                // BlocProvider.of<FavoriteBloc>(context).add(
-                //     ToggleFavoriteMovieEvent(
-                //         movieEntity: MovieEntity.fromMovieDetailEntity(
-                //             movieDetailEntity),
-                //         isFavorite: state.isMovieFavorite));
                 BlocProvider.of<FavoriteCubit>(context).toggleFavoriteMovie(
                     MovieEntity.fromMovieDetailEntity(movieDetailEntity),
                     state.isMovieFavorite);

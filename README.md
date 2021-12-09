@@ -9,7 +9,27 @@ O objetivo da construção do APP é usar uma arquitetura bem definida e desacop
 
 ---
 
+# **Principais Funcionalidades**
+
+- Listar filmes populares
+- Listar filmes lançados recentemente
+- Listar filmes a serem lançados em breve
+- Buscar filmes
+- Favoritar Filmes
+- Listar Filmes favoritos
+- Listar detalhes do filme (elenco, trailers)
+- Assistir trailers
+- Multilinguagem (inglês e espanhol)
+- Realizar feedback sobre o app
+- Login com credenciais do TMDB
+- Logout
+- Login como convidado
+
 ## [**Link para a documentação da API**](https://developers.themoviedb.org/3)
+
+## **App em funcionamento**
+
+![](screens/cleanmovie.gif)
 
 ## Porquê de algumas decisões arquiteturais e de bibliotecas
 

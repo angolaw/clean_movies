@@ -69,7 +69,7 @@ class _MovieAppState extends State<MovieApp> {
         ),
       ],
       child: BlocBuilder<ThemeCubit, Themes>(
-        builder: (context, state) {
+        builder: (context, theme) {
           return BlocBuilder<LanguageCubit, Locale>(
             builder: (context, locale) {
               return WiredashApp(
@@ -101,7 +101,11 @@ class _MovieAppState extends State<MovieApp> {
                   navigatorKey: _navigatorKey,
                   theme: ThemeData(
                     primaryColor: AppColor.vulcan,
-                    scaffoldBackgroundColor: AppColor.vulcan,
+                    scaffoldBackgroundColor:
+                        theme == Themes.dark ? AppColor.vulcan : Colors.white,
+                    brightness: theme == Themes.dark
+                        ? Brightness.dark
+                        : Brightness.light,
                     visualDensity: VisualDensity.adaptivePlatformDensity,
                     textTheme: ThemeText.getTextTheme(),
                     appBarTheme: const AppBarTheme(elevation: 0),

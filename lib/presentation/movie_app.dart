@@ -100,7 +100,8 @@ class _MovieAppState extends State<MovieApp> {
                   title: 'Movie App',
                   navigatorKey: _navigatorKey,
                   theme: ThemeData(
-                    primaryColor: AppColor.vulcan,
+                    primaryColor:
+                        theme == Themes.dark ? AppColor.vulcan : Colors.white,
                     scaffoldBackgroundColor:
                         theme == Themes.dark ? AppColor.vulcan : Colors.white,
                     brightness: theme == Themes.dark
@@ -111,6 +112,10 @@ class _MovieAppState extends State<MovieApp> {
                         ? ThemeText.getTextTheme()
                         : ThemeText.getLightTextTheme(),
                     appBarTheme: const AppBarTheme(elevation: 0),
+                    colorScheme: ColorScheme.fromSwatch().copyWith(
+                        secondary: theme == Themes.dark
+                            ? AppColor.vulcan
+                            : Colors.white),
                   ),
                 ),
               );

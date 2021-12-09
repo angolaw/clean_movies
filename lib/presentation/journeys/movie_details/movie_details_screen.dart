@@ -10,6 +10,7 @@ import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
+import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';
 import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/videos_widget.dart';
@@ -168,8 +169,10 @@ class CastWidget extends StatelessWidget {
                               castEntity.name,
                               overflow: TextOverflow.fade,
                               maxLines: 1,
-                              style:
-                                  Theme.of(context).textTheme.vulcanBodyText2,
+                              style: context.read<ThemeCubit>().state ==
+                                      Themes.dark
+                                  ? Theme.of(context).textTheme.vulcanBodyText2
+                                  : Theme.of(context).textTheme.whiteBodyText2,
                             ),
                           ),
                           //4

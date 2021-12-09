@@ -15,6 +15,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
 import 'blocs/login/login_bloc.dart';
+import 'blocs/theme/theme_cubit.dart';
 
 class MovieApp extends StatefulWidget {
   const MovieApp({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class _MovieAppState extends State<MovieApp> {
   LanguageCubit? _languageCubit;
   LoginBloc? _loginBloc;
   LoadingCubit? _loadingCubit;
+  ThemeCubit? _themeCubit;
 
   @override
   void initState() {
@@ -35,6 +37,7 @@ class _MovieAppState extends State<MovieApp> {
     _languageCubit?.loadPreferredLanguage();
     _loginBloc = getItInstance<LoginBloc>();
     _loadingCubit = getItInstance<LoadingCubit>();
+    _themeCubit = getItInstance<ThemeCubit>();
   }
 
   @override
@@ -42,6 +45,7 @@ class _MovieAppState extends State<MovieApp> {
     _languageCubit?.close();
     _loginBloc?.close();
     _loadingCubit?.close();
+    _themeCubit?.close();
     super.dispose();
   }
 
@@ -60,44 +64,51 @@ class _MovieAppState extends State<MovieApp> {
         BlocProvider<LoadingCubit>.value(
           value: _loadingCubit!,
         ),
+        BlocProvider<ThemeCubit>.value(
+          value: _themeCubit!,
+        ),
       ],
-      child: BlocBuilder<LanguageCubit, Locale>(
-        builder: (context, locale) {
-          return WiredashApp(
-            navigatorKey: _navigatorKey,
-            languageCode: locale.languageCode,
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              supportedLocales:
-                  Languages.languages.map((e) => Locale(e.code)).toList(),
-              locale: locale,
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                AppLocalizations.delegate,
-              ],
-              builder: (context, child) {
-                return child!;
-              },
-              onGenerateRoute: (RouteSettings settings) {
-                final routes = Routes.getRoutes(settings);
-                WidgetBuilder builder = routes[settings.name]!;
-                return FadePageRouteBuilder(
-                  builder: builder,
-                  settings: settings,
-                );
-              },
-              initialRoute: RouteList.initial,
-              title: 'Movie App',
-              navigatorKey: _navigatorKey,
-              theme: ThemeData(
-                primaryColor: AppColor.vulcan,
-                scaffoldBackgroundColor: AppColor.vulcan,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-                textTheme: ThemeText.getTextTheme(),
-                appBarTheme: const AppBarTheme(elevation: 0),
-              ),
-            ),
+      child: BlocBuilder<ThemeCubit, Themes>(
+        builder: (context, state) {
+          return BlocBuilder<LanguageCubit, Locale>(
+            builder: (context, locale) {
+              return WiredashApp(
+                navigatorKey: _navigatorKey,
+                languageCode: locale.languageCode,
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  supportedLocales:
+                      Languages.languages.map((e) => Locale(e.code)).toList(),
+                  locale: locale,
+                  localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    AppLocalizations.delegate,
+                  ],
+                  builder: (context, child) {
+                    return child!;
+                  },
+                  onGenerateRoute: (RouteSettings settings) {
+                    final routes = Routes.getRoutes(settings);
+                    WidgetBuilder builder = routes[settings.name]!;
+                    return FadePageRouteBuilder(
+                      builder: builder,
+                      settings: settings,
+                    );
+                  },
+                  initialRoute: RouteList.initial,
+                  title: 'Movie App',
+                  navigatorKey: _navigatorKey,
+                  theme: ThemeData(
+                    primaryColor: AppColor.vulcan,
+                    scaffoldBackgroundColor: AppColor.vulcan,
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    textTheme: ThemeText.getTextTheme(),
+                    appBarTheme: const AppBarTheme(elevation: 0),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),

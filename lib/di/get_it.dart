@@ -4,6 +4,7 @@ import 'package:clean_movies/data/datasources/authentication_remote_data_source.
 import 'package:clean_movies/data/datasources/language_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_local_data_source.dart';
 import 'package:clean_movies/data/datasources/movie_remote_data_source.dart';
+import 'package:clean_movies/data/datasources/theme_local_data_source.dart';
 import 'package:clean_movies/data/repositories/app_repository_impl.dart';
 import 'package:clean_movies/data/repositories/authentication_repository_impl.dart';
 import 'package:clean_movies/data/repositories/movie_repository_impl.dart';
@@ -19,6 +20,7 @@ import 'package:clean_movies/domain/usecases/get_movie_detail.dart';
 import 'package:clean_movies/domain/usecases/get_playing_now.dart';
 import 'package:clean_movies/domain/usecases/get_popular.dart';
 import 'package:clean_movies/domain/usecases/get_preferred_language.dart';
+import 'package:clean_movies/domain/usecases/get_preferred_theme.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/domain/usecases/get_videos.dart';
 import 'package:clean_movies/domain/usecases/login_user.dart';
@@ -26,6 +28,7 @@ import 'package:clean_movies/domain/usecases/logout_user.dart';
 import 'package:clean_movies/domain/usecases/save_movie.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
 import 'package:clean_movies/domain/usecases/update_language.dart';
+import 'package:clean_movies/domain/usecases/update_preferred_theme.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/language/language_cubit.dart';
@@ -39,6 +42,7 @@ import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_blo
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';
 import 'package:clean_movies/presentation/blocs/search_movies/search_movies_bloc.dart';
+import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';
 import 'package:clean_movies/presentation/blocs/videos/videos_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -86,8 +90,11 @@ Future init() async {
   //* LANGUAGE
   getItInstance.registerLazySingleton<LanguageLocalDataSource>(
       () => LanguageLocalDataSourceImpl());
-  getItInstance.registerLazySingleton<AppRepository>(
-      () => AppRepositoryImpl(languageLocalDataSource: getItInstance()));
+  getItInstance.registerLazySingleton<ThemeLocalDataSource>(
+      () => ThemeLocalDataSourceImpl());
+  getItInstance.registerLazySingleton<AppRepository>(() => AppRepositoryImpl(
+      languageLocalDataSource: getItInstance(),
+      themeLocalDataSource: getItInstance()));
   getItInstance.registerLazySingleton<GetPreferredLanguage>(
       () => GetPreferredLanguage(repository: getItInstance()));
   getItInstance.registerLazySingleton<UpdateLanguage>(
@@ -166,4 +173,12 @@ Future init() async {
   getItInstance.registerFactory<LoadingCubit>(() => LoadingCubit());
   //! movieBackdropCubit
   getItInstance.registerFactory<MovieBackdropCubit>(() => MovieBackdropCubit());
+  //* ThemeCubit
+  getItInstance.registerLazySingleton<UpdatePreferredTheme>(
+      () => UpdatePreferredTheme(repository: getItInstance()));
+  getItInstance.registerLazySingleton<GetPreferredTheme>(
+      () => GetPreferredTheme(repository: getItInstance()));
+  getItInstance.registerFactory<ThemeCubit>(() => ThemeCubit(
+      getPreferredTheme: getItInstance(),
+      updatePreferredTheme: getItInstance()));
 }

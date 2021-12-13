@@ -5,7 +5,6 @@ import 'package:clean_movies/common/route_list.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/movie_params.dart';
-import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite_cubit/favorite_cubit.dart';
 import 'package:clean_movies/presentation/journeys/movie_details/movie_details_argument.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +48,6 @@ class FavoriteMovieCardWidget extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: GestureDetector(
                   onTap: () {
-                    print("movie: ${movie.id}");
                     BlocProvider.of<FavoriteCubit>(context)
                         .deleteFavoriteMovie(MovieParams(id: movie.id));
                   },

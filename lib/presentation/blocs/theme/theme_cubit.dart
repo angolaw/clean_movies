@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:clean_movies/domain/usecases/get_preferred_theme.dart';
 import 'package:clean_movies/domain/usecases/no_params.dart';
 import 'package:clean_movies/domain/usecases/update_preferred_theme.dart';
-import 'package:equatable/equatable.dart';
 
 enum Themes {
   light,

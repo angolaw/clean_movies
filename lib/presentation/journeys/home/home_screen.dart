@@ -1,5 +1,4 @@
 import 'package:clean_movies/di/get_it.dart';
-import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop_cubit/movie_backdrop_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_carousel/moviecarousel_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_tab/movietab_bloc.dart';

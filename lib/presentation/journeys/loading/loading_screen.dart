@@ -1,5 +1,4 @@
 import 'package:clean_movies/common/constants/size_constants.dart';
-import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
 import 'package:clean_movies/presentation/journeys/loading/loading_circle.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';

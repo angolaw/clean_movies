@@ -3,9 +3,7 @@ import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/usecases/get_trending.dart';
 import 'package:clean_movies/domain/usecases/no_params.dart';
-import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
-import 'package:clean_movies/presentation/blocs/movie_backdrop/moviebackdrop_bloc.dart';
 import 'package:clean_movies/presentation/blocs/movie_backdrop_cubit/movie_backdrop_cubit.dart';
 import 'package:equatable/equatable.dart';
 

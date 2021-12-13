@@ -8,7 +8,6 @@ import 'package:clean_movies/common/extensions/string_extensions.dart';
 import 'package:clean_movies/data/core/api_constants.dart';
 import 'package:clean_movies/di/get_it.dart';
 import 'package:clean_movies/presentation/blocs/cast/cast_bloc.dart';
-import 'package:clean_movies/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:clean_movies/presentation/blocs/favorite_cubit/favorite_cubit.dart';
 import 'package:clean_movies/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';

@@ -71,7 +71,6 @@ class _MovieAppState extends State<MovieApp> {
       ],
       child: BlocBuilder<ThemeCubit, Themes>(
         builder: (context, theme) {
-          print(theme);
           return BlocBuilder<LanguageCubit, Locale>(
             builder: (context, locale) {
               return WiredashApp(

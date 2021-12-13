@@ -3,7 +3,6 @@ import 'package:clean_movies/domain/entities/app_error.dart';
 import 'package:clean_movies/domain/entities/movie_entity.dart';
 import 'package:clean_movies/domain/entities/movie_search_params.dart';
 import 'package:clean_movies/domain/usecases/search_movies.dart';
-import 'package:clean_movies/presentation/blocs/loading/loading_bloc.dart';
 import 'package:clean_movies/presentation/blocs/loading_cubit/loading_cubit.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';

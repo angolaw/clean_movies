@@ -2,7 +2,6 @@ import 'package:clean_movies/presentation/blocs/theme/theme_cubit.dart';
 import 'package:clean_movies/presentation/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:clean_movies/common/extensions/size_extension.dart';
-import 'package:provider/src/provider.dart';
 
 class Logo extends StatelessWidget {
   final double height;

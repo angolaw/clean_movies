@@ -83,19 +83,6 @@ O objetivo da construção do APP é usar uma arquitetura bem definida e desacop
 - Composition Over Inheritance
 - Small Commits
 
-> ## Design Patterns
-
-- Factory
-- Adapter
-- Composite
-- Decorator
-- Dependency Injection
-- Abstract Server
-- Composition Root
-- Builder
-- Singleton
-- Observer
-
 > ## Metodologias e Designs
 
 - Clean Architecture
